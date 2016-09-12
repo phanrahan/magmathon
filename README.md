@@ -79,7 +79,7 @@ First, clone the Magma Hackathon repo.
 Then build the examples.
 
 ```
-% cd magmathon
+% cd magmathon/tests
 % . doit
 python counter.py build/counter
 importing lattice ice40
@@ -128,7 +128,7 @@ These variables causes magma to use the lattice ice40 version
 of the mantle library.
 
 The build script is called `bake`.
-This is like `make`, but it uses `fabricate`.
+`bake` is like `make`, but it uses `fabricate`.
 
 The output of the build script is placed in the `build` directory.
 ```
@@ -158,7 +158,7 @@ and upload the the bitstream file.
 % make upload
 iceprog counter.bin
 ```
-The LED on the icestick should blink once per second.
+The LED on the icestick should blink approximately 3 times per second.
 
 Congratulations, everything is installed correctly and working!
 

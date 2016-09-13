@@ -1,0 +1,9 @@
+set_io SIG[0] 78
+set_io SIG[1] 79
+set_io SIG[2] 80
+set_io SIG[3] 81
+set_io SIG[4] 87
+set_io SIG[5] 88
+set_io SIG[6] 90
+set_io SIG[7] 91
+set_io CLKIN 21

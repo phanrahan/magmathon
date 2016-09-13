@@ -1,0 +1,32 @@
+module main (output [3:0] LED, input [7:0] SWITCH);
+wire  inst0_O;
+wire  inst1_O;
+wire  inst2_O;
+wire  inst3_O;
+wire  inst4_O;
+wire  inst5_O;
+wire  inst6_O;
+wire  inst7_O;
+wire  inst8_O;
+wire  inst9_O;
+wire  inst10_O;
+wire  inst11_O;
+wire  inst12_O;
+wire  inst13_O;
+LUT3 #(.INIT(8'h96)) inst0 (.I0(SWITCH[0]), .I1(SWITCH[1]), .I2(SWITCH[2]), .O(inst0_O));
+LUT3 #(.INIT(8'hE8)) inst1 (.I0(SWITCH[0]), .I1(SWITCH[1]), .I2(SWITCH[2]), .O(inst1_O));
+LUT3 #(.INIT(8'h96)) inst2 (.I0(SWITCH[3]), .I1(SWITCH[4]), .I2(SWITCH[5]), .O(inst2_O));
+LUT3 #(.INIT(8'hE8)) inst3 (.I0(SWITCH[3]), .I1(SWITCH[4]), .I2(SWITCH[5]), .O(inst3_O));
+LUT3 #(.INIT(8'h96)) inst4 (.I0(SWITCH[6]), .I1(SWITCH[7]), .I2(1'b0), .O(inst4_O));
+LUT3 #(.INIT(8'hE8)) inst5 (.I0(SWITCH[6]), .I1(SWITCH[7]), .I2(1'b0), .O(inst5_O));
+LUT3 #(.INIT(8'h96)) inst6 (.I0(inst0_O), .I1(inst2_O), .I2(inst4_O), .O(inst6_O));
+LUT3 #(.INIT(8'hE8)) inst7 (.I0(inst0_O), .I1(inst2_O), .I2(inst4_O), .O(inst7_O));
+LUT3 #(.INIT(8'h96)) inst8 (.I0(inst1_O), .I1(inst3_O), .I2(inst5_O), .O(inst8_O));
+LUT3 #(.INIT(8'hE8)) inst9 (.I0(inst1_O), .I1(inst3_O), .I2(inst5_O), .O(inst9_O));
+LUT3 #(.INIT(8'h96)) inst10 (.I0(inst7_O), .I1(inst8_O), .I2(1'b0), .O(inst10_O));
+LUT3 #(.INIT(8'hE8)) inst11 (.I0(inst7_O), .I1(inst8_O), .I2(1'b0), .O(inst11_O));
+LUT3 #(.INIT(8'h96)) inst12 (.I0(inst9_O), .I1(inst10_O), .I2(1'b0), .O(inst12_O));
+LUT3 #(.INIT(8'hE8)) inst13 (.I0(inst9_O), .I1(inst10_O), .I2(1'b0), .O(inst13_O));
+assign LED = {inst13_O,inst12_O,inst10_O,inst6_O};
+endmodule
+

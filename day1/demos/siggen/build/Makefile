@@ -1,4 +1,4 @@
-NAME = square
+NAME = sawtooth
 
 #PNR=~/git/arachne-pnr-fork/bin/arachne-pnr
 PNR=arachne-pnr

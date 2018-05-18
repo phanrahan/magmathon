@@ -1,4 +1,4 @@
-NAME = pwm
+NAME = siso
 
 PNR=arachne-pnr
 

@@ -1,18 +1,16 @@
-import sys
-from magma import *
-from mantle import *
-from boards.icestick import IceStick
+import magma as m
+from mantle import Counter
+from loam.boards.icestick import IceStick
 
 icestick = IceStick()
 icestick.Clock.on()
-icestick.PMOD[0].rename('SIG').output().on()
+icestick.J3[0].output().on()
 
 main = icestick.main()
 
 counter = Counter(32)
 square = counter.O[9]
 
-wire( square, main.SIG )
+m.wire( square, main.J3[0] )
 
-compile(sys.argv[1], main)
 

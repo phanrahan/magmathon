@@ -1,7 +1,6 @@
-import sys
-from magma import *
-from mantle import *
-from boards.icestick import IceStick
+import magma as m
+from mantle import Counter, ULE
+from loam.boards.icestick import IceStick
 
 N = 8
 
@@ -10,16 +9,15 @@ def PWM(n):
 
 icestick = IceStick()
 icestick.Clock.on()
-icestick.PMOD[0].rename('SIG').output().on()
+icestick.J3[0].rename('J3').output().on()
 
 main = icestick.main()
 
 counter = Counter(32)
 sawtooth = counter.O[8:8+N]
-
 pwm = PWM(N)
-pwm( sawtooth, array(0,0,0,0,0,0,1,0) )
-wire( pwm, main.SIG )
 
-compile(sys.argv[1], main)
+m.wire( pwm( sawtooth, m.uint(128,8) ), main.J3 )
+
+
 

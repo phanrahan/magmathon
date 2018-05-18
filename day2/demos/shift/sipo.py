@@ -1,14 +1,14 @@
-import sys
-from magma import *
-from mantle import *
-from shields.megawing import MegaWing
+import magma as m
+from mantle import FFs
+from loam.boards.icestick import IceStick
 
-megawing = MegaWing()
-megawing.Clock.on()
-megawing.Switch.on(1)
-megawing.LED.on(8)
+N = 8
 
-main = megawing.main()
+icestick = IceStick()
+icestick.Clock.on()
+icestick.J1[0].rename('J1').input().on()
+for i in range(N):
+    icestick.J3[i].output().on()
 
 def DefineSIPO(n):
     """
@@ -17,24 +17,24 @@ def DefineSIPO(n):
     I : Bit -> O : Array(n, Bit)
     """
 
-    class _SIPO(Circuit):
+    class _SIPO(m.Circuit):
         name = 'SIPO'+str(n)
-        IO = ['input I', Bit, 'output O', Array(n,Bit)] + ClockInterface()
+        IO = ['I', m.In(m.Bit), 'O', m.Out(m.Bits(n))] + m.ClockInterface()
 
         @classmethod
         def definition(sipo):
             ffs = FFs(n)
-            reg = braid(ffs, scanargs={"I":"O"})
-            wire(sipo.I, reg.I)
-            wire(reg.O, sipo.O)
-            wireclock(sipo, reg)
+            reg = m.braid(ffs, scanargs={"I":"O"})
+            m.wire(sipo.I, reg.I)
+            m.wire(reg.O, sipo.O)
+            m.wireclock(sipo, reg)
 
     return _SIPO
+
+main = icestick.main()
 
 SIPO8 = DefineSIPO(8)
 sipo8 = SIPO8()
 
-sipo8(main.SWITCH[0])
-wire(sipo8, main.LED)
+m.wire( sipo8(main.J1), main.J3 )
 
-compile(sys.argv[1], main)

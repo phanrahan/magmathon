@@ -1,4 +1,4 @@
-NAME = pwm
+NAME = and
 
 PNR=arachne-pnr
 

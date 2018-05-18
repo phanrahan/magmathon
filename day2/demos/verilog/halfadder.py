@@ -1,28 +1,29 @@
-import sys
-from magma import *
-from mantle import *
-from shields.megawing import MegaWing
+import magma as m
+from loam.boards.icestick import IceStick
 
-megawing = MegaWing()
-megawing.Switch.on(2)
-megawing.LED.on(1)
+icestick = IceStick()
+icestick.Clock.on()
+icestick.J1[0].input().on()
+icestick.J1[1].input().on()
+icestick.J3[0].output().on()
+icestick.J3[1].output().on()
 
-main = megawing.main()
+main = icestick.main()
 
-HalfAdder = DefineCircuit('Add', 
-   'input A', Bit, 
-   'input B', Bit,
-   'output S', Bit,
-   'output C', Bit)
+HalfAdder = m.DefineCircuit('Add', 
+   'A', m.In(m.Bit), 
+   'B', m.In(m.Bit),
+   'S', m.Out(m.Bit),
+   'C', m.Out(m.Bit))
 HalfAdder.verilog  = '''\
     assign S = A ^ B;
     assign C = A & B;\
 '''
-EndCircuit()
+m.EndCircuit()
 
 add = HalfAdder()
-add(main.SWITCH[0], main.SWITCH[1])
-wire(add.C, main.LED[0])
+add(main.J1[0], main.J1[1])
+m.wire(add.S, main.J3[0])
+m.wire(add.C, main.J3[1])
 
-compile(sys.argv[1], main)
 

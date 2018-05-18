@@ -1,24 +1,24 @@
-import sys
-from magma import *
-from mantle import *
-from shields.megawing import MegaWing
-
-megawing = MegaWing()
-megawing.Clock.on()
-megawing.Switch.on(8)
-megawing.LED.on(4)
-
-main = megawing.main()
+import magma as m
+from mantle import LUT2, I0, I1, And
+from loam.boards.icestick import IceStick
 
 def And2(y):
     return LUT2(I0&I1)
 
 def And(n):
-    return join(col(And2, n))
+    return m.join(m.col(And2, n))
+
+
+icestick = IceStick()
+icestick.Clock.on()
+for i in range(8):
+    icestick.J1[i].input().on()
+for i in range(4):
+    icestick.J3[i].output().on()
+
+main = icestick.main()
 
 a = And(4)
 
-a(main.SWITCH[0:4], main.SWITCH[4:8])
-wire(a.O, main.LED)
+m.wire( a(main.J1[0:4], main.J1[4:8]), main.J3 )
 
-compile(sys.argv[1], main)

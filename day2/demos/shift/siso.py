@@ -1,14 +1,13 @@
-import sys
-from magma import *
-from mantle import *
-from shields.megawing import MegaWing
+import magma as m
+from mantle import FFs
+from loam.boards.icestick import IceStick
 
-megawing = MegaWing()
-megawing.Clock.on()
-megawing.Switch.on(1)
-megawing.LED.on(1)
+N = 8
 
-main = megawing.main()
+icestick = IceStick()
+icestick.Clock.on()
+icestick.J1[0].rename('J1').input().on()
+icestick.J3[0].rename('J3').output().on()
 
 def DefineSISO(n):
     """
@@ -17,24 +16,24 @@ def DefineSISO(n):
     I : Bit -> O : Bit
     """
 
-    class _SISO(Circuit):
+    class _SISO(m.Circuit):
         name = 'SISO'+str(n)
-        IO = ['input I', Bit, 'output O', Bit] + ClockInterface()
+        IO = ['I', m.In(m.Bit), 'O', m.Out(m.Bit)] + m.ClockInterface()
 
         @classmethod
         def definition(siso):
             ffs = FFs(n)
-            reg = braid(ffs, foldargs={"I":"O"})
+            reg = m.braid(ffs, foldargs={"I":"O"})
             reg(siso.I)
-            wire(reg.O, siso.O)
-            wireclock(siso, reg)
+            m.wire(reg.O, siso.O)
+            m.wireclock(siso, reg)
 
     return _SISO
+
+main = icestick.main()
 
 SISO8 = DefineSISO(8)
 siso8 = SISO8()
 
-siso8(main.SWITCH[0])
-wire(siso8, main.LED[0])
+m.wire( siso8(main.J1), main.J3 )
 
-compile(sys.argv[1], main)

@@ -1,0 +1,9 @@
+[submodule "magma"]
+	path = magma
+	url = git@github.com:phanrahan/magma.git
+[submodule "mantle"]
+	path = mantle
+	url = git@github.com:phanrahan/mantle.git
+[submodule "loam"]
+	path = loam
+	url = git@github.com:phanrahan/loam.git

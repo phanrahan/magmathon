@@ -1,10 +1,7 @@
-NAME = counter
-
-#PNR=~/git/arachne-pnr-fork/bin/arachne-pnr
-PNR=arachne-pnr
+NAME = blink
 
 DEVICE = 1k
-PCF = $(NAME).ucf
+PCF = $(NAME).pcf
 
 QUIET = -q
 
@@ -14,7 +11,7 @@ all: $(NAME).bin
 	icepack $< $@
 
 %.txt: %.blif
-	$(PNR) $(QUIET) -d $(DEVICE) -o $@ -p $(PCF) $< 
+	arachne-pnr $(QUIET) -d $(DEVICE) -o $@ -p $(PCF) $< 
 
 %.blif: %.v
 	yosys $(QUIET) -p 'synth_ice40 -top main -blif $@' $<

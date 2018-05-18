@@ -1,8 +1,0 @@
-set_io I1 78
-set_io I2 79
-set_io I3 80
-set_io I4 81
-set_io D4 96
-set_io D3 97
-set_io D2 98
-set_io D1 99

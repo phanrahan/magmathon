@@ -8,7 +8,7 @@ The Icestick is a small FPGA with an open-source tool chain.
 ### Icestorm tools
 
 To install the icestorm tools,
-go to the [project icestorm](http://www.clifford.at/icestorm/} web site
+go to the [project icestorm](http://www.clifford.at/icestorm/) web site
 and follow the instructions under "How to Install the Tools".
 You will need to install
 
@@ -44,36 +44,56 @@ And then remove the one that is installed.
 These drivers are installed on boot,
 and may need to be installed if you reboot.
 
-### Magma
+### Python
 
-Next clone, the magma repository.
+If you don't have Python setup, we recommend using Miniconda
 
+#### MacOS
 ```
-% git clone git@github.com:phanrahan/magma.git
-```
-
-Note the directory where you install magma,
-and add that directory to your PYTHONPATH.
-
-```
-export PYTHONPATH=$PYTHONPATH:~/git/magma
+$ wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+$ bash Miniconda3-latest-MacOSX-x86_64.sh
 ```
 
-Magma uses a build system based on `fabricate`.
-Download and install the 
-[fabricate build environment](https://github.com/SimonAlfie/fabricate).
-The file `fabricate.py` 
-should be installed in site-packages for your version of python.
+#### Linux
+```
+$ wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+$ bash Miniconda3-latest-MacOSX-x86_64.sh
+```
+
+Follow the prompts to install Miniconda and add Python to your PATH:
+
+```
+...
+Please, press ENTER to continue
+>>> [ENTER]
+...
+<scroll down>
+...
+Do you accept the license terms? [yes|no]
+[no] >>> yes
+...
+   - Press ENTER to confirm the location
+   - Press CRTL-C to abort the installation
+   - Or specify a different location below
+
+[/Users/yourusername/miniconda3] >>> [ENTER]
+...
+Do you wish the installer to prepend the Miniconda3 install location
+to PATH in your /Users/yourusername/.bash_profile ? [yes|no]
+[yes] >>> yes
+```
 
 ### Magmathon
 
-If all these tools are install and the repo cloned,
-you should be able to run the programs in this hackathon.
+If all these tools are install and the repo cloned, you should be able to run
+the programs in this hackathon.
 
-First, clone the Magma Hackathon repo.
+First, clone the Magma Hackathon repo and run the script to install the
+dependencies.
 
 ```
 % git clone git@github.com:phanrahan/magmathon.git
+% python scripts/install.py
 ```
 
 Then build the examples.

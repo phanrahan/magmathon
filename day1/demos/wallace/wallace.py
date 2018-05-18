@@ -1,14 +1,14 @@
 #
-# Implementatin of wallace trees
+# Implementation of wallace trees
 #
-from magma import *
-from mantle import *
+import magma as m
+from mantle import LUT2, LUT3, I0, I1, I2
 
 def compress2to2():
-    return fork([LUT2(I0^I1), LUT2((I0&I1)|(I1&I2))])
+    return m.fork([LUT2(I0^I1), LUT2((I0&I1)|(I1&I2))])
 
 def compress3to2():
-    return fork([LUT3(I0^I1^I2), LUT3((I0&I1)|(I1&I2)|(I2&I0))])
+    return m.fork([LUT3(I0^I1^I2), LUT3((I0&I1)|(I1&I2)|(I2&I0))])
 
 def column(bits):
     n = len(bits)

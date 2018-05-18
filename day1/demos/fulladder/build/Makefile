@@ -1,10 +1,9 @@
-NAME = fulladder
+NAME = logic
 
-#PNR=~/git/arachne-pnr-fork/bin/arachne-pnr
 PNR=arachne-pnr
 
 DEVICE = 1k
-PCF = $(NAME).ucf
+PCF = $(NAME).pcf
 
 QUIET = -q
 

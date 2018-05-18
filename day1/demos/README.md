@@ -8,7 +8,7 @@ tff - toggle flip-flop using sequential logic
 
 behavioral - 4 different ways of initializing a lUT
   logic1.py - LUT as a number
-  logic2.py - LUT as an expression
+  logic2.py - LUT as an bitwise expression
   logic3.py - LUT as a function
   logic4.py - LUT as a sequence
 

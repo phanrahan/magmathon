@@ -1,55 +1,33 @@
-# Makefile to compile and download a simple Verilog program
+NAME = pop
 
-DEVICE=xc3s250e
-SPEED=4
-PACKAGE=vq100
-PART=${DEVICE}-${SPEED}-${PACKAGE}
+PNR=arachne-pnr
 
-TARGET=inout
+DEVICE = 1k
+PCF = $(NAME).pcf
 
-default: ${TARGET}.bit
+QUIET = -q
 
-${TARGET}.ngc: ${TARGET}.v
-	@echo 'run'                 > xst.cmd
-	@echo '-p $(PART)'         >> xst.cmd
-	@echo '-ifn $(TARGET).v'   >> xst.cmd
-	@echo '-ifmt verilog'      >> xst.cmd
-	@echo '-ofn $(TARGET).ngc' >> xst.cmd
-	@echo '-ofmt NGC' 	   >> xst.cmd
-	@echo '-opt_mode Speed'	   >> xst.cmd
-	@echo '-opt_level 1'	   >> xst.cmd
-	xst -ifn xst.cmd
+all: $(NAME).bin
 
-${TARGET}.ngd: ${TARGET}.ngc ${TARGET}.ucf
-	ngdbuild -p $(PART) -uc ${TARGET}.ucf ${TARGET}.ngc
+%.bin: %.txt
+	icepack $< $@
 
-${TARGET}.ncd: ${TARGET}.ngd
-	map -detail -pr b ${TARGET}.ngd
+%.txt: %.blif
+	$(PNR) $(QUIET) -d $(DEVICE) -o $@ -p $(PCF) $< 
 
-${TARGET}.pcf: ${TARGET}.ngd
-	map -detail -pr b ${TARGET}.ngd
+%.blif: %.v
+	yosys $(QUIET) -p 'synth_ice40 -top main -blif $@' $<
 
-parout.ncd: ${TARGET}.ncd
-	par -w ${TARGET}.ncd parout.ncd ${TARGET}.pcf
+upload: $(NAME).bin
+	iceprog $<
 
-${TARGET}.bit: parout.ncd
-	bitgen -w -g CRC:Enable -g StartUpClk:CClk \
-   	  parout.ncd ${TARGET}.bit ${TARGET}.pcf
-
-upload: ${TARGET}.bit
-	papilio-prog -v -f ${TARGET}.bit 
-	#papilio-prog -v -f ${TARGET}.bit -b ../bscan_spi_xc3s250e.bit -sa -r
-	#papilio-prog -c
+explain: $(NAME).txt
+	icebox_explain $<
 
 clean:
-	rm -rf \
-    ${TARGET}.bgn \
-	${TARGET}.drc ${TARGET}.map ${TARGET}.mrp \
-	${TARGET}.ncd ${TARGET}.ngc ${TARGET}.ngd \
-	${TARGET}.ngm ${TARGET}.pcf ${TARGET}.prm \
-    *.bit \
-    *.xrpt *.xwbt *.xml *.html *.log \
-	netlist.lst parout.ncd parout.pad parout_pad.csv \
-	parout_pad.txt parout.par parout.ptwx parout.unroutes \
-	parout.xpi xlnx_auto_0.ise xlnx_auto_0_xdb xst _xmsgs xst.cmd xst.srp
+	rm -f *.bin *.txt *.blif *.rpt
 
+
+.PRECIOUS: %.bin %.txt %.blif 
+
+.PHONY: all explain install clean

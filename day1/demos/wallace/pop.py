@@ -1,22 +1,19 @@
-import sys
-from magma import *
-from mantle import *
+import magma as m
+from loam.boards.icestick import IceStick
 from wallace import wallace
-from shields.megawing import MegaWing
 
 N = 8
-M = 4
+LOGN = 4
 
-megawing = MegaWing()
-megawing.Switch.on(N)
-megawing.LED.on(M)
+icestick = IceStick()
+for i in range(N):
+    icestick.J1[i].input().on()
+for i in range(LOGN):
+    icestick.J3[i].output().on()
 
-main = megawing.main()
-I = main.SWITCH
-O = main.LED
+main = icestick.main()
 
-r = wallace([main.SWITCH])
+r = wallace([main.J1])
 for i in range(len(r)):
-    wire(r[i][0], main.LED[i])
+    m.wire(r[i][0], main.J3[i])
 
-compile(sys.argv[1], main)

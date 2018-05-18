@@ -1,4 +1,4 @@
-NAME = sawtooth
+NAME = lut1
 
 PNR=arachne-pnr
 

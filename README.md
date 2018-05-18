@@ -7,28 +7,28 @@ The Icestick is a small FPGA with an open-source tool chain.
 
 ### Icestorm tools
 
-To install the icestorm tools,
-go to the [project icestorm](http://www.clifford.at/icestorm/) web site
-and follow the instructions under "How to Install the Tools".
-You will need to install
+To install the icestorm tools, go to the [project
+icestorm](http://www.clifford.at/icestorm/) web site and follow the
+instructions under "How to Install the Tools".
 
+You will need to install:
 * icestorm tools for generating bitstreams and programming the icestick
 * arachne-pnr for placing and routing 
 * yosys verilog synthesis tool
 
-These programs should be installed in a public bin directory.
+These programs should be installed into your shell environment's `$PATH`.
 
-Note that if you are using a Mac,
-follow these [instruction](http://www.clifford.at/icestorm/notes_osx.html).
+Note that if you are using a Mac, follow these
+[instruction](http://www.clifford.at/icestorm/notes_osx.html).
 
-One annoying problem on the Mac is the FTDI drivers.
-There are three different FTDI drivers for OSX:
-(1) Apple's driver,
-(2) FTDI's driver,
-and (3) the open-source ftdi driver.
-In order to use the icestorm programmer,
-you need to uninstall the Apple and FTDI drivers.
-To see which driver is currently installed, run
+One annoying problem on the Mac is the FTDI drivers.  There are three different
+FTDI drivers for OSX:
+1. Apple's driver
+2. FTDI's driver
+3. the open-source ftdi driver
+
+In order to use the icestorm programmer, you need to uninstall the Apple and
+FTDI drivers.  To see which driver is currently installed, run
 
 ```
 kextstat | fgrep FTDI
@@ -41,8 +41,8 @@ And then remove the one that is installed.
 % sudo kextunload -b com.apple.driver.AppleUSBFTDI
 ```
 
-These drivers are installed on boot,
-and may need to be installed if you reboot.
+These drivers are installed on boot, and may need to be installed if you
+reboot.
 
 ### Python
 

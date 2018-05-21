@@ -34,4 +34,4 @@
 *.o
 *.log
 *~
-notebooks/.ipynb_checkpoints
+.ipynb_checkpoints

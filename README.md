@@ -1,5 +1,7 @@
 Welcome to the homepage for the magmathon!
 
+[Registration Form](https://goo.gl/forms/VkmP2Hs55ZnzHqRd2)
+
 If you’d like to discuss project ideas, want to advertise a project in search of team members, or want to join an existing project, send us an email (lenny@cs.stanford.edu and hanrahan@cs.stanford.edu).
 
 # Schedule

@@ -1,4 +1,36 @@
-# Gettting Started with Magma and Mantle on the Icestick
+Welcome to the homepage for the magmathon!
+
+If you’d like to discuss project ideas, want to advertise a project in search of team members, or want to join an existing project, send us an email (lenny@cs.stanford.edu and hanrahan@cs.stanford.edu).
+
+# Schedule
+```
+ 9:00am -  9:30am -- Setup and Installation
+ 9:30am - 10:00am -- Magma Tutorial (hello world)
+10:00am - 10:30am -- Magma Assignment (signal generator)
+10:30am - 11:30pm -- Magma In Depth (overview of language features)
+11:30pm - 12:30pm -- Lunch
+12:30pm -  4:30pm -- Freeform Hacking
+ 4:30pm -  5:00pm -- Show and Tell and Debrief
+```
+
+# Session Overviews
+
+## Setup and Installation
+All attendees will receive a Lattice ice stick to program and will have access to a basic lab environment with breadboards, wiring material and logic analyzers to use. Please get in touch with us early if you’d like to get any additional hardware (sensors, buttons, etc…) for your project and we can assist you. This session will be devoted to getting magma and other supporting software setup so you can program the Lattice ice stick.
+
+## Magma Tutorial
+This is a brief 30 minute session that will walk through creating a simple circuit in magma that blinks an LED on the Lattice ice stick. This simple introductory circuit is analogous to writing Hello World in a programming language, and introduces the fundamental concept of magma as well as demonstrating the integration with the open source synthesis tools used to program the FPGA.
+
+## Magma Assignment
+After our tutorial, we’ll provide a prompt for a circuit design that attendees can implement. This provides attendees a chance to integrate the material they learned in the tutorial to build their own magma circuit from scratch. The assignment will involve creating a signal generator on the FPGA, which can be used to drive a pattern using the on board LEDs or an audio output using a breakout board for a 3.5mm jack (bring headphones!). We’ll also show attendees how to use a logic analyzer to check and debug their designs.
+
+## Magma In Depth
+This hour long session will be a more in depth presentation of the magma language that focuses on features for building generators, meta programming, memories, testing, and simulation. The exact topics we cover will depend on the interest of the attendees, but the goal is to provide an in depth review of magma’s more complex features that will be useful for the hackathon projects.
+
+## Freeform hacking
+The afternoon will be devoted free form hacking where attendees are free to hack wherever they want. We’ll have lab space open for people who want to work with hardware materials. The goal of this hackathon is to support self organizing projects, so we’ll mainly be providing space, materials, and support for attendees. 
+
+# Setup: Gettting Started with Magma and Mantle on the Icestick
 
 We will be using Magma with an Lattice Icestick.
 The Icestick is a small FPGA with an open-source tool chain.

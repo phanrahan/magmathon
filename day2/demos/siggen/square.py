@@ -11,6 +11,6 @@ main = icestick.main()
 counter = Counter(32)
 square = counter.O[9]
 
-m.wire( square, main.J3[0] )
+m.wire( square, main.J3 )
 
 

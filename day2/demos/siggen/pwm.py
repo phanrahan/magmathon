@@ -9,7 +9,7 @@ def PWM(n):
 
 icestick = IceStick()
 icestick.Clock.on()
-icestick.J3[0].rename('J3').output().on()
+icestick.J3[0].output().on()
 
 main = icestick.main()
 

@@ -186,10 +186,10 @@ assign O = inst1_O;
 assign COUT = inst0_COUT;
 endmodule
 
-module main (output [0:0] J3, input  CLKIN);
+module main (output  J3, input  CLKIN);
 wire [31:0] inst0_O;
 wire  inst0_COUT;
 Counter32 inst0 (.O(inst0_O), .COUT(inst0_COUT), .CLK(CLKIN));
-assign J3 = {inst0_O[9]};
+assign J3 = inst0_O[9];
 endmodule
 

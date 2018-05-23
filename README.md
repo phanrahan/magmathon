@@ -87,11 +87,19 @@ And then remove the one that is installed.
 
 ```
 $ sudo kextunload -b com.FTDI.driver.FTDIUSBSerialDriver
+```
+
+or
+
+```
 $ sudo kextunload -b com.apple.driver.AppleUSBFTDI
 ```
 
-These drivers are installed on boot, and may need to be installed if you
-reboot.
+To reload the driver later, substitute `kextunload` with `kextload` in the
+above command.
+
+These drivers are installed on boot, so you may need to uninstall them again
+every time you reboot.
 
 ### Python
 

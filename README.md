@@ -34,16 +34,31 @@ The afternoon will be devoted free form hacking where attendees are free to hack
 
 # Setup: Gettting Started with Magma and Mantle on the Icestick
 
-We will be using Magma with an Lattice Icestick.
-The Icestick is a small FPGA with an open-source tool chain.
+We will be using Magma with the Lattice Icestick, a small FPGA with an
+open-source tool chain.
 
 ![icestick](images/icestick.jpg)
+> http://www.latticesemi.com/icestick
+> USB thumb drive form factor evaluation board - [...] an easy to use, small size board that allows rapid prototyping of system functions at a very low cost using Lattice Semiconductor's iCE40 FPGA family.
 
 ### Icestorm tools
 
-To install the icestorm tools, go to the [project
-icestorm](http://www.clifford.at/icestorm/) web site and follow the
-instructions under "How to Install the Tools".
+A major advantage of using this board is that all the tools needed to program
+the FPGA are available as open source software that runs on Mac, Linux, and
+Windows.
+
+> http://www.clifford.at/icestorm/
+> Project IceStorm reversed engineered and documented the bitstream format of
+> Lattice iCE40 FPGAs. They also wrote a suite of command line tools for
+> manipulating and creating bitstream files.
+
+> The IceStorm flow includes two other tools: yosys and Arachne-pnr. Yosys is
+> an open source verilog synthesis engine that maps verilog to ICE40
+> primitives. Arachne-pnr is a place and router for the ICE40.
+
+To install the icestorm tools, go to the [project icestorm
+website](http://www.clifford.at/icestorm/) and follow the instructions under
+**How to Install the Tools**.
 
 You will need to install:
 * icestorm tools for generating bitstreams and programming the icestick
@@ -53,7 +68,7 @@ You will need to install:
 These programs should be installed into your shell environment's `$PATH`.
 
 Note that if you are using a Mac, follow these
-[instruction](http://www.clifford.at/icestorm/notes_osx.html).
+[instructions](http://www.clifford.at/icestorm/notes_osx.html).
 
 One annoying problem on the Mac is the FTDI drivers.  There are three different
 FTDI drivers for OSX:
@@ -71,8 +86,8 @@ kextstat | fgrep FTDI
 And then remove the one that is installed.
 
 ```
-% sudo kextunload -b com.FTDI.driver.FTDIUSBSerialDriver
-% sudo kextunload -b com.apple.driver.AppleUSBFTDI
+$ sudo kextunload -b com.FTDI.driver.FTDIUSBSerialDriver
+$ sudo kextunload -b com.apple.driver.AppleUSBFTDI
 ```
 
 These drivers are installed on boot, and may need to be installed if you
@@ -126,96 +141,62 @@ First, clone the Magma Hackathon repo and run the script to install the
 dependencies.
 
 ```
-% git clone git@github.com:phanrahan/magmathon.git
-% python scripts/install.py
+$ git clone git@github.com:phanrahan/magmathon.git
+$ cd magmathon
+$ python scripts/install.py
 ```
 
-Then build the examples.
+To validate that the installation was successful, we will compile a test Magma
+program that blinks an LED on the IceStick.
 
 ```
-% cd magmathon/tests
-% . doit
-python counter.py build/counter
-importing lattice ice40
-importing lattice mantle40
-setup clock
-setup clock
-compiling Adc22_1
+$ cd tests
+$ ls
+bake        blink.py    build
+```
+
+The build script is called `bake`.  `bake` is like `make`, but it uses the
+Python library `fabricate` to handle dependency management.
+```
+$ ./bake
+magma -b icestick blink
+import mantle lattice ice40
+import mantle lattice mantle40
+compiling FullAdder
+compiling Add22Cout
 compiling Register22
 compiling Counter22
 compiling main
-cmp build/counter.ucf gold/counter.ucf
-cmp build/counter.v gold/counter.v
-python inout.py build/inout
-importing lattice ice40
-importing lattice mantle40
-compiling main
-cmp build/inout.ucf gold/inout.ucf
-cmp build/inout.v gold/inout.v
-python out.py build/out
-importing lattice ice40
-importing lattice mantle40
-compiling main
-cmp build/out.ucf gold/out.ucf
-cmp build/out.v gold/out.v
-
 ```
-
-The script, `doit` builds two programs, `counter.py` and `out.py`.
-That script is pretty simple,
-
-```
-% cat doit
-export MANTLE=lattice
-export MANTLE_TARGET=ice40
-./bake clean
-./bake
-%
-```
-To use the icestick board with Magma,
-you need to set the MANTLE and MANTLE_TARGET environment variables.
-```
-% export MANTLE=lattice
-% export MANTLE_TARGET=ice40
-```
-These variables causes magma to use the lattice ice40 version
-of the mantle library.
-
-The build script is called `bake`.
-`bake` is like `make`, but it uses `fabricate`.
+Running the build script invokes the `magma` cli tool. We pass the `-b
+icestick` argument to indicate to `magma` that we are compiling for the Lattice
+icestick. 
 
 The output of the build script is placed in the `build` directory.
 ```
-% cd build
-% ls
-Makefile    counter.v   inout.v     out.v
-counter.ucf inout.ucf   out.ucf
+$ cd build
+$ ls
+Makefile  blink.pcf blink.v
 ```
+
 To build a bitstream for the icestick, run make.
 ```
-% make
-yosys -q -p 'synth_ice40 -top main -blif counter.blif' counter.v
-arachne-pnr -q -d 1k -o counter.txt -p counter.ucf counter.blif 
-icepack counter.txt counter.bin
+$ make
+yosys -q -p 'synth_ice40 -top main -blif blink.blif' blink.v
+arachne-pnr -q -d 1k -o blink.txt -p blink.pcf blink.blif
+icepack blink.txt blink.bin
 ```
-`yosys` is the verilog synthesizer;
-it creares a file called "counter.blif".
-`arachne-pnr` is the place and router;
-it takes as input "counter.blif", 
-and produces an ascii bit stream file "counter.txt".
-The program `icepack` converts the ascii bit stream file
-to a binary bit stream file "counter.bin"..
 
-Now plug in your icestick,
-and upload the the bitstream file.
+`yosys`, the verilog synthesis tool, creates a file called `blink.blif`.
+`arachne-pnr`, the place and router, takes as input `blink.blif` and produces
+an ascii bit stream file `blink.txt`.  The `icepack` program converts the ascii
+bit stream file to a binary bit stream file `counter.bin`.
+
+Now plug in your icestick, and upload the the bitstream file.
 ```
-% make upload
+$ make upload
 iceprog counter.bin
 ```
 The LED on the icestick should blink approximately 3 times per second.
 
 Congratulations, everything is installed correctly and working!
-
-
-
-

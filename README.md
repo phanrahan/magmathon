@@ -58,7 +58,9 @@ Windows.
 
 To install the icestorm tools, go to the [project icestorm
 website](http://www.clifford.at/icestorm/) and follow the instructions under
-**How to Install the Tools**.
+**How to Install the Tools**.  Alternatively, you can try the
+`scripts/install_icestorm.py` script which supports MacOS+homebrew and Ubuntu
+Linux.
 
 You will need to install:
 * icestorm tools for generating bitstreams and programming the icestick

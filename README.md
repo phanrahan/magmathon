@@ -160,14 +160,13 @@ program that blinks an LED on the IceStick.
 ```
 $ cd tests
 $ ls
-bake        blink.py    build
+Makefile blink.py
 ```
 
-The build script is called `bake`.  `bake` is like `make`, but it uses the
-Python library `fabricate` to handle dependency management.
+Build the program.
 ```
-$ ./bake
-magma -b icestick blink
+$ make
+magma -b icestick blink.py
 import mantle lattice ice40
 import mantle lattice mantle40
 compiling FullAdder
@@ -175,35 +174,23 @@ compiling Add22Cout
 compiling Register22
 compiling Counter22
 compiling main
+yosys -q -p 'synth_ice40 -top main -blif blink.blif' blink.v
+arachne-pnr -q -d 1k -o blink.txt -p blink.pcf blink.blif
+icepack blink.txt blink.bin
+rm blink.v
 ```
 Running the build script invokes the `magma` cli tool. We pass the `-b
 icestick` argument to indicate to `magma` that we are compiling for the Lattice
 icestick. 
-
-The output of the build script is placed in the `build` directory.
-```
-$ cd build
-$ ls
-Makefile  blink.pcf blink.v
-```
-
-To build a bitstream for the icestick, run make.
-```
-$ make
-yosys -q -p 'synth_ice40 -top main -blif blink.blif' blink.v
-arachne-pnr -q -d 1k -o blink.txt -p blink.pcf blink.blif
-icepack blink.txt blink.bin
-```
-
 `yosys`, the verilog synthesis tool, creates a file called `blink.blif`.
 `arachne-pnr`, the place and router, takes as input `blink.blif` and produces
 an ascii bit stream file `blink.txt`.  The `icepack` program converts the ascii
-bit stream file to a binary bit stream file `counter.bin`.
+bit stream file to a binary bit stream file `blink.bin`.
 
 Now plug in your icestick, and upload the the bitstream file.
 ```
 $ make upload
-iceprog counter.bin
+iceprog blink.bin
 ```
 The LED on the icestick should blink approximately 3 times per second.
 

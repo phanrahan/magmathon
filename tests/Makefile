@@ -1,5 +1,7 @@
 NAME = blink
 
+BOARD = icestick
+
 DEVICE = 1k
 PCF = $(NAME).pcf
 
@@ -16,6 +18,12 @@ all: $(NAME).bin
 %.blif: %.v
 	yosys $(QUIET) -p 'synth_ice40 -top main -blif $@' $<
 
+%.v: %.py
+	magma -b $(BOARD) $<
+
+%.rpt: %.txt
+	icetime -d hx$(DEVICE) -mtr $@ $<
+
 upload: $(NAME).bin
 	iceprog $<
 
@@ -23,7 +31,7 @@ explain: $(NAME).txt
 	icebox_explain $<
 
 clean:
-	rm -f *.bin *.txt *.blif *.rpt
+	rm -f *.bin *.txt *.blif *.rpt *.v *.pcf
 
 
 .PRECIOUS: %.bin %.txt %.blif 

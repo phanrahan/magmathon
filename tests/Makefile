@@ -19,7 +19,7 @@ all: $(NAME).bin
 	yosys $(QUIET) -p 'synth_ice40 -top main -blif $@' $<
 
 %.v: %.py
-	magma -b $(BOARD) $<
+	magma -b $(BOARD) -d "" $<
 
 %.rpt: %.txt
 	icetime -d hx$(DEVICE) -mtr $@ $<

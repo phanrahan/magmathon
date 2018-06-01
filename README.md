@@ -5,6 +5,7 @@ Welcome to the homepage for the magmathon!
 If you’d like to discuss project ideas, want to advertise a project in search of team members, or want to join an existing project, send us an email (lenny@cs.stanford.edu and hanrahan@cs.stanford.edu).
 
 # Schedule
+June 19th, 2018
 ```
  9:00am -  9:30am -- Setup and Installation
  9:30am - 10:00am -- Magma Tutorial (hello world)

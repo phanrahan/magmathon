@@ -1,6 +1,8 @@
 Welcome to the homepage for the magmathon!
 
-[Registration Form](https://goo.gl/forms/VkmP2Hs55ZnzHqRd2)
+The hackathon will be held on Tuesday, June 19th, 2018 in Gates 358.
+
+[Registration Form](https://goo.gl/forms/VkmP2Hs55ZnzHqRd2) (please register early so we can prepare enough food and hardware).
 
 If you’d like to discuss project ideas, want to advertise a project in search of team members, or want to join an existing project, send us an email (lenny@cs.stanford.edu and hanrahan@cs.stanford.edu).
 

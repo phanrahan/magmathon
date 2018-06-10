@@ -1,6 +1,10 @@
 import subprocess
 
-subprocess.run("pip install -e magma", shell=True)
-subprocess.run("pip install -e mantle", shell=True)
-subprocess.run("pip install -e loam", shell=True)
-subprocess.run("pip install fabricate", shell=True)
+def run(command, *args, **kwargs):
+    print("+ {}".format(command))
+    subprocess.run(command, *args, **kwargs)
+
+run("pip install -e magma", shell=True)
+run("pip install -e mantle", shell=True)
+run("pip install -e loam", shell=True)
+run("pip install fabricate", shell=True)

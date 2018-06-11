@@ -40,7 +40,10 @@ The afternoon will be devoted free form hacking where attendees are free to hack
 We will be using Magma with the Lattice Icestick, a small FPGA with an
 open-source tool chain.
 
-![icestick](images/icestick.jpg)
+<p align="center">
+  <img width="460" height="300" src="images/icestick.jpg">
+</p>
+
 > http://www.latticesemi.com/icestick
 > USB thumb drive form factor evaluation board - [...] an easy to use, small size board that allows rapid prototyping of system functions at a very low cost using Lattice Semiconductor's iCE40 FPGA family.
 

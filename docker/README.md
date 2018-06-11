@@ -1,47 +1,41 @@
-## MacOS
+# MacOS and Windows
 According to https://docs.docker.com/docker-for-mac/faqs docker for mac doesn't
 support pass through for USB devices, so we have to use [Docker
-Toolbox](https://docs.docker.com/toolbox/overview/#ready-to-get-started).
-Download and install Docker Toolbox.
+Toolbox](https://docs.docker.com/toolbox/overview/#ready-to-get-started). We'll
+use the same setup for windows as well.
+
+Install [Docker
+Toolbox](https://docs.docker.com/toolbox/overview/#ready-to-get-started)
 
 You'll also need the [Oracle VM VirtualBox Extension
 Pack](https://www.virtualbox.org/wiki/Downloads). Note that you'll need to be
 sure to have a compatible version of VirtualBox and the extension pack. If you
 have an existing installation of virtualbox, you may need to update it.
 
+Open up a terminal (on Windows you can use PowerShell).
+
 First we create a virtual box VM to use
 ```
-$ docker-machine create virtualbox
+$ docker-machine create --driver virtualbox magma
 ```
 
 Then we stop it so we can configure it to enable USB ports
 ```
-$ docker-machine stop virtualbox
+$ docker-machine stop magma
 ```
 
-Open up virtualbox, go to the VM named `virtualbox`, right click to open
-settings. Go to Ports -> USB and enable the controller. Use the button
+Open up virtualbox, go to the VM named `magma`, right click to open settings.
+Go to Ports -> USB and enable the controller (I used USB 2.0). Use the button
 with the green plus to add the Lattice FTUSB Interface Cable.
 
 Start the virtual machine again
 ```
-$ docker-machine start virtualbox
+$ docker-machine start magma
 ```
 
-It prompts us to use this command to see how to configure our shell
+We setup our environment to attach to this docker-machine
 ```
-$ docker-machine env virtualbox
-export DOCKER_TLS_VERIFY="1"
-export DOCKER_HOST="tcp://192.168.99.100:2376"
-export DOCKER_CERT_PATH="/Users/lenny/.docker/machine/machines/virtualbox"
-export DOCKER_MACHINE_NAME="virtualbox"
-# Run this command to configure your shell:
-# eval $(docker-machine env virtualbox)
-```
-
-So we follow the instructions
-```
-$ eval $(docker-machine env virtualbox)
+$ eval $(docker-machine env magma)
 ```
 
 Now pull the image

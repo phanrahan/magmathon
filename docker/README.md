@@ -89,3 +89,7 @@ VERIFY OK
 cdone: high
 Bye.
 ```
+
+### Resources
+* https://gist.github.com/stonehippo/e33750f185806924f1254349ea1a4e68
+* http://gw.tnode.com/docker/docker-machine-with-usb-support-on-windows-macos/

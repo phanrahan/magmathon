@@ -11,12 +11,12 @@ have an existing installation of virtualbox, you may need to update it.
 
 First we create a virtual box VM to use
 ```
-docker-machine create virtualbox
+$ docker-machine create virtualbox
 ```
 
 Then we stop it so we can configure it to enable USB ports
 ```
-docker-machine stop virtualbox
+$ docker-machine stop virtualbox
 ```
 
 Open up virtualbox, go to the VM named `virtualbox`, right click to open
@@ -25,7 +25,7 @@ with the green plus to add the Lattice FTUSB Interface Cable.
 
 Start the virtual machine again
 ```
-docker-machine start virtualbox
+$ docker-machine start virtualbox
 ```
 
 It prompts us to use this command to see how to configure our shell
@@ -41,16 +41,46 @@ export DOCKER_MACHINE_NAME="virtualbox"
 
 So we follow the instructions
 ```
-eval $(docker-machine env virtualbox)
+$ eval $(docker-machine env virtualbox)
 ```
 
 Now we load up our image
 ```
-docker run -it --rm --device=/dev/ttyUSB0 --privileged lennyt/magma:latest /bin/bash
+$ docker run -it --rm --device=/dev/ttyUSB0 --privileged lennyt/magma:latest /bin/bash
 ```
 
-We should be able to upload the blink program
+First, we can try compiling a simple test program using magma
 ```
-cd magmathon/tests
-make upload
+(base) root@96cd16861daf:/# cd magmathon/tests
+(base) root@96cd16861daf:/magmathon/tests# make
+magma -b icestick -d "" blink.py
+import lattice ice40
+import lattice mantle40
+compiling FullAdder
+compiling Add22Cout
+compiling Register22
+compiling Counter22
+compiling main
+yosys -q -p 'synth_ice40 -top main -blif blink.blif' blink.v
+arachne-pnr -q -d 1k -o blink.txt -p blink.pcf blink.blif
+icepack blink.txt blink.bin
+rm blink.v
+```
+
+Then, if you have an icestick, you can try uploading the test program.
+```
+(base) root@96cd16861daf:/magmathon/tests# make upload
+iceprog blink.bin
+init..
+cdone: high
+reset..
+cdone: low
+flash ID: 0x20 0xBA 0x16 0x10 0x00 0x00 0x23 0x51 0x73 0x10 0x23 0x00 0x35 0x00 0x35 0x06 0x06 0x15 0x43 0xB6
+file size: 32220
+erase 64kB sector at 0x000000..
+programming..
+reading..
+VERIFY OK
+cdone: high
+Bye.
 ```

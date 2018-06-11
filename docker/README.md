@@ -44,7 +44,12 @@ So we follow the instructions
 $ eval $(docker-machine env virtualbox)
 ```
 
-Now we load up our image
+Now pull the image
+```
+docker pull lennyt/magma:latest
+```
+
+And run it
 ```
 $ docker run -it --rm --device=/dev/ttyUSB0 --privileged lennyt/magma:latest /bin/bash
 ```

@@ -1,3 +1,13 @@
+# Using the vagrant box
+```
+vagrant init lennyt/magma \
+  --box-version 0.0.1
+vagrant up
+vagrant ssh
+```
+
+# Building the vagrant box
+
 ```
 vagrant up
 vagrant package

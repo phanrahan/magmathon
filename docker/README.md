@@ -1,6 +1,8 @@
+## MacOS
 According to https://docs.docker.com/docker-for-mac/faqs docker for mac doesn't
 support pass through for USB devices, so we have to use [Docker
-Toolbox](https://docs.docker.com/toolbox/overview/#ready-to-get-started)
+Toolbox](https://docs.docker.com/toolbox/overview/#ready-to-get-started).
+Download and install Docker Toolbox.
 
 You'll also need the [Oracle VM VirtualBox Extension
 Pack](https://www.virtualbox.org/wiki/Downloads). Note that you'll need to be
@@ -45,4 +47,10 @@ eval $(docker-machine env virtualbox)
 Now we load up our image
 ```
 docker run -it --rm --device=/dev/ttyUSB0 --privileged lennyt/magma:latest /bin/bash
+```
+
+We should be able to upload the blink program
+```
+cd magmathon/tests
+make upload
 ```

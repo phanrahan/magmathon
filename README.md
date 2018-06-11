@@ -47,12 +47,14 @@ open-source tool chain.
 > http://www.latticesemi.com/icestick
 > USB thumb drive form factor evaluation board - [...] an easy to use, small size board that allows rapid prototyping of system functions at a very low cost using Lattice Semiconductor's iCE40 FPGA family.
 
-For the simplest, potable setup flow, we provide a provisioned Vagrant box
-(virtualbox VM), see [this page](/vagrant) for instructions on how to use it.
-We also provide a [docker image](/docker), but due to the requirement of USB
-passthrough, the setup is not quite as lightweight as expected.  We suggest
-that users who do not want to install the tools locally on their machine use
-the Vagrant VM.
+This section walks through the installation process for the software toolchain.
+We've tested these instructions on the latest version of MacOS and Ubuntu
+Linux.  Windows users should setup a linux virtual machine and configure the VM
+provider to pass through the Lattice USB device to the guest.  For convenience,
+we provide a provisioned Vagrant box (virtualbox VM), see [this page](/vagrant)
+for instructions on how to use it.  We also provide a [docker image](/docker),
+but due to the requirement of USB passthrough, the setup is not quite as
+lightweight as expected.
 
 ### Icestorm tools
 

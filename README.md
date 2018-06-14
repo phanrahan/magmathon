@@ -157,9 +157,15 @@ to PATH in your /Users/yourusername/.bash_profile ? [yes|no]
 [yes] >>> yes
 ```
 
+### Logic Analyzer
+
+To use a logic analyzer during the [signal generator
+exercises](./notebooks/signal-generator), download the [saleae
+software](https://www.saleae.com/downloads/).
+
 ### Magmathon
 
-If all these tools are install and the repo cloned, you should be able to run
+Once all these tools are install and the repo cloned, you should be able to run
 the programs in this hackathon.
 
 First, clone the Magma Hackathon repo and run the script to install the

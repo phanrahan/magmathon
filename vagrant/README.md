@@ -4,9 +4,11 @@
 
 In a terminal (Windows users can use powershell)
 ```
-vagrant init --minimal lennyt/magma --box-version 0.0.1
-vagrant up
-vagrant ssh
+$ vagrant init --minimal lennyt/magma --box-version 0.0.1
+$ vagrant up
+$ vagrant ssh
+vagrant@vagrant-ubuntu-trusty-64:~$ cd magmathon/tests
+vagrant@vagrant-ubuntu-trusty-64:~$ make
 ```
 
 # Building the vagrant box

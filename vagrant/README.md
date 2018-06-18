@@ -1,4 +1,8 @@
 # Using the vagrant box
+* Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) including download the "Oracle VM VirtualBox Extension Pack"
+* Install [Vagrant](https://www.vagrantup.com/downloads.html)
+
+In a terminal (Windows users can use powershell)
 ```
 vagrant init lennyt/magma \
   --box-version 0.0.1

@@ -4,8 +4,7 @@
 
 In a terminal (Windows users can use powershell)
 ```
-vagrant init lennyt/magma \
-  --box-version 0.0.1
+vagrant init --minimal lennyt/magma --box-version 0.0.1
 vagrant up
 vagrant ssh
 ```

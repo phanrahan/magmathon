@@ -10,8 +10,8 @@ If you’d like to discuss project ideas, want to advertise a project in search 
 Tuesday, June 19th, 2018
 ```
  9:00am -  9:30am -- Setup and Installation
- 9:30am - 10:30am -- Magma Tutorial (hello world)
-10:30am - 11:00am -- Magma Assignment (signal generator)
+ 9:30am - 10:00am -- Magma Tutorial (hello world)
+10:00am - 11:00am -- Magma Assignment (signal generator)
 11:00am - 12:00pm -- Magma In Depth (overview of language features)
 12:00pm - 12:30pm -- Lunch
 12:30pm -  4:30pm -- Freeform Hacking

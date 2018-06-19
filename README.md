@@ -131,7 +131,7 @@ $ bash Miniconda3-latest-MacOSX-x86_64.sh
 #### Linux
 ```
 $ wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
-$ bash Miniconda3-latest-MacOSX-x86_64.sh
+$ bash Miniconda3-latest-Linux-x86_64.sh
 ```
 
 Follow the prompts to install Miniconda and add Python to your PATH:
@@ -172,7 +172,7 @@ First, clone the Magma Hackathon repo and run the script to install the
 dependencies.
 
 ```
-$ git clone git@github.com:phanrahan/magmathon.git
+$ git clone https://github.com/phanrahan/magmathon.git
 $ cd magmathon
 $ python scripts/install.py
 ```

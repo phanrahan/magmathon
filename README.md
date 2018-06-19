@@ -172,7 +172,7 @@ First, clone the Magma Hackathon repo and run the script to install the
 dependencies.
 
 ```
-$ git clone git@github.com:phanrahan/magmathon.git
+$ git clone https://github.com/phanrahan/magmathon.git
 $ cd magmathon
 $ python scripts/install.py
 ```

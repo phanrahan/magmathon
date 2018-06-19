@@ -11,7 +11,7 @@ import multiprocessing
 
 
 parser = argparse.ArgumentParser(description='Install the toolchain for '
-        'programming the icestcik')
+        'programming the icestick')
 parser.add_argument('--num_cores', type=int, default=multiprocessing.cpu_count(),
                    help='run make with `num_cores` cores (-j `num_cores`), '
                         'defaults to `multiprocessing.cpu_count()`')

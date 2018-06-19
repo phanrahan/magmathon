@@ -50,9 +50,9 @@ $ docker run -it --rm --device=/dev/ttyUSB0 --privileged lennyt/magma:latest /bi
 
 First, we can try compiling a simple test program using magma
 ```
-(base) root@96cd16861daf:/# cd magmathon
-(base) root@96cd16861daf:/# git pull && git submodule update
-(base) root@96cd16861daf:/# cd tests
+(base) root@96cd16861daf:/magmathon# cd magmathon
+(base) root@96cd16861daf:/magmathon# git pull && git submodule update
+(base) root@96cd16861daf:/magmathon# cd tests
 (base) root@96cd16861daf:/magmathon/tests# make
 magma -b icestick -d "" blink.py
 import lattice ice40

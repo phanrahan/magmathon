@@ -33,7 +33,7 @@ After our tutorial, we’ll provide a prompt for a circuit design that attendees
 This hour long session will be a more in depth presentation of the magma language that focuses on features for building generators, meta programming, memories, testing, and simulation. The exact topics we cover will depend on the interest of the attendees, but the goal is to provide an in depth review of magma’s more complex features that will be useful for the hackathon projects.
 
 ## Freeform hacking
-The afternoon will be devoted free form hacking where attendees are free to hack wherever they want. We’ll have lab space open for people who want to work with hardware materials. The goal of this hackathon is to support self organizing projects, so we’ll mainly be providing space, materials, and support for attendees. 
+The afternoon will be devoted free form hacking where attendees are free to hack wherever they want. We’ll have lab space open for people who want to work with hardware materials. The goal of this hackathon is to support self organizing projects, so we’ll mainly be providing space, materials, and support for attendees.  Please submit a PR that adds a link to your project repository to [projects/README.md](/projects/README.md).
 
 # Setup: Gettting Started with Magma and Mantle on the Icestick
 

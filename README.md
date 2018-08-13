@@ -10,7 +10,7 @@ The next hackathon will be held on Wednesday, August 22nd at Facebook.
  9:30am -  9:45am -- Magma Ecosystem Overview (Pat Hanrahan)
  9:45am - 10:15am -- Magma Tutorial (Lenny Truong)
 10:15am - 10:45am -- Magma Assignment
-10:45am - 11:15am -- Garnet - Using the magma ecosystem to build a chip (Raj Setaluri)
+10:45am - 11:15am -- Garnet - Using the magma ecosystem to build a CGRA (Raj Setaluri)
 11:15am - 12:30pm -- Lunch
 12:30pm -  4:30pm -- Freeform Hacking
  4:30pm -  5:00pm -- Show and Tell and Debrief
@@ -49,7 +49,7 @@ assignment will involve creating a signal generator on the FPGA, which can be
 used to drive a pattern using the on board LEDs. We’ll also show attendees how
 to use a logic analyzer to check and debug their designs.
 
-## Using the magma ecosystem to build a chip
+## Using the magma ecosystem to build a CGRA
 In this session we'll present [garnet](https://github.com/StanfordAHA/garnet),
 our latest project that is using the Magma ecosystem to construct a CGRA.
 We'll cover how Magma can be used to wrap existing verilog code so that it can

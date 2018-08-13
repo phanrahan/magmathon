@@ -27,11 +27,11 @@ software setup so you can program the Lattice ice stick.
 ## Magma Ecosystem Overview
 This session will present a high-level overview of the Magma ecosystem: a set
 of Python packages for hardware design.  This will cover how a Python-embedded
-hardware description language serves as the basis for a suite of productivity tools
+hardware design language serves as the basis for a suite of productivity tools
 including verification infrastructure and high-level DSLs.
 
 ## Magma Tutorial
-The tutorial covers the basics of the magma hardware description language,
+The tutorial covers the basics of the magma hardware design language,
 introducing users to the circuit abstraction, wiring, types, and operators.  In
 this session, we will walk through creating a simple circuit in magma that
 blinks an LED on the Lattice ice stick. This simple introductory circuit is

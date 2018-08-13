@@ -1,5 +1,7 @@
 Welcome to the homepage for the magmathon!
 
+The next hackathon will be held on Wednesday, August 22nd at Facebook.
+
 # Schedule
 ```
  9:00am -  9:30am -- Setup and Installation

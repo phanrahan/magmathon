@@ -1,19 +1,13 @@
 Welcome to the homepage for the magmathon!
 
-The hackathon will be held on Tuesday, June 19th, 2018 in Gates 358.
-
-[Registration Form](https://goo.gl/forms/VkmP2Hs55ZnzHqRd2) (please register early so we can prepare enough food and hardware).
-
-If you’d like to discuss project ideas, want to advertise a project in search of team members, or want to join an existing project, send us an email (lenny@cs.stanford.edu and hanrahan@cs.stanford.edu).
-
 # Schedule
-Tuesday, June 19th, 2018
 ```
  9:00am -  9:30am -- Setup and Installation
- 9:30am - 10:00am -- Magma Tutorial (hello world)
-10:00am - 11:00am -- Magma Assignment (signal generator)
-11:00am - 12:00pm -- Magma In Depth (overview of language features)
-12:00pm - 12:30pm -- Lunch
+ 9:30am -  9:45am -- Magma Ecosystem Overview (Pat Hanrahan)
+ 9:45am - 10:15am -- Magma Tutorial (Lenny Truong)
+10:15am - 10:45am -- Magma Assignment
+10:45am - 11:15am -- Garnet - Using the magma ecosystem to build a chip (Raj Setaluri)
+11:15am - 12:30pm -- Lunch
 12:30pm -  4:30pm -- Freeform Hacking
  4:30pm -  5:00pm -- Show and Tell and Debrief
 ```
@@ -21,19 +15,51 @@ Tuesday, June 19th, 2018
 # Session Overviews
 
 ## Setup and Installation
-All attendees will receive a Lattice ice stick to program and will have access to a basic lab environment with breadboards, wiring material and logic analyzers to use. Please get in touch with us early if you’d like to get any additional hardware (sensors, buttons, etc…) for your project and we can assist you. This session will be devoted to getting magma and other supporting software setup so you can program the Lattice ice stick.
+All attendees will receive a Lattice ice stick to program and will have access
+to a basic lab equipment including breadboards, wiring material and logic
+analyzers. Please get in touch with us early if you’d like to get any
+additional hardware (sensors, buttons, etc…) for your project and we can assist
+you. This session will be devoted to getting magma and other supporting
+software setup so you can program the Lattice ice stick.
+
+## Magma Ecosystem Overview
+This session will present a high-level overview of the Magma ecosystem: a set
+of Python packages for hardware design.  This will cover how a Python-embedded
+hardware description language serves as the basis for a suite of productivity tools
+including verification infrastructure and high-level DSLs.
 
 ## Magma Tutorial
-This is a brief 30 minute session that will walk through creating a simple circuit in magma that blinks an LED on the Lattice ice stick. This simple introductory circuit is analogous to writing Hello World in a programming language, and introduces the fundamental concept of magma as well as demonstrating the integration with the open source synthesis tools used to program the FPGA.
+The tutorial covers the basics of the magma hardware description language,
+introducing users to the circuit abstraction, wiring, types, and operators.  In
+this session, we will walk through creating a simple circuit in magma that
+blinks an LED on the Lattice ice stick. This simple introductory circuit is
+analogous to writing Hello World in a programming language, and introduces the
+fundamental concept of magma as well as demonstrating the integration with the
+open source synthesis tools used to program the FPGA.
 
 ## Magma Assignment
-After our tutorial, we’ll provide a prompt for a circuit design that attendees can implement. This provides attendees a chance to integrate the material they learned in the tutorial to build their own magma circuit from scratch. The assignment will involve creating a signal generator on the FPGA, which can be used to drive a pattern using the on board LEDs or an audio output using a breakout board for a 3.5mm jack (bring headphones!). We’ll also show attendees how to use a logic analyzer to check and debug their designs.
+After our tutorial, we’ll provide a prompt for a circuit design that attendees
+can implement. This provides attendees a chance to integrate the material they
+learned in the tutorial to build their own magma circuit from scratch. The
+assignment will involve creating a signal generator on the FPGA, which can be
+used to drive a pattern using the on board LEDs. We’ll also show attendees how
+to use a logic analyzer to check and debug their designs.
 
-## Magma In Depth
-This hour long session will be a more in depth presentation of the magma language that focuses on features for building generators, meta programming, memories, testing, and simulation. The exact topics we cover will depend on the interest of the attendees, but the goal is to provide an in depth review of magma’s more complex features that will be useful for the hackathon projects.
+## Using the magma ecosystem to build a chip
+In this session we'll present [garnet](https://github.com/StanfordAHA/garnet),
+our latest project that is using the Magma ecosystem to construct a CGRA.
+We'll cover how Magma can be used to wrap existing verilog code so that it can
+be integrated with the verification tools.  We'll also present concrete
+examples of how integration with Python using Magma enables us to to leverage
+software abstractions and techniques to construct modular, composeable, and
+reuseable generators.
 
 ## Freeform hacking
-The afternoon will be devoted free form hacking where attendees are free to hack wherever they want. We’ll have lab space open for people who want to work with hardware materials. The goal of this hackathon is to support self organizing projects, so we’ll mainly be providing space, materials, and support for attendees.  Please submit a PR that adds a link to your project repository to [projects/README.md](/projects/README.md).
+The afternoon will be devoted free form hacking where attendees are free to
+hack wherever they want. The goal of this hackathon is to support self
+organizing projects, so we’ll mainly be providing space, materials, and support
+for attendees.  Please submit a PR that adds a link to your project repository
+to [projects/README.md](/projects/README.md).
 
 # Setup: Gettting Started with Magma and Mantle on the Icestick
 

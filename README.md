@@ -1,4 +1,6 @@
-Welcome to the homepage for the magmathon!
+Welcome to the homepage for the magmathon! See [the magma
+repository](https://github.com/phanrahan/magma) for more information on
+the embedded hardware design language.
 
 The next hackathon will be held on Wednesday, August 22nd at Facebook.
 

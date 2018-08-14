@@ -10,9 +10,10 @@ The next hackathon will be held on Wednesday, August 22nd at Facebook.
  9:30am -  9:45am -- Magma Ecosystem Overview (Pat Hanrahan)
  9:45am - 10:15am -- Magma Tutorial (Lenny Truong)
 10:15am - 10:45am -- Magma Assignment
-10:45am - 11:15am -- Garnet - Using the magma ecosystem to build a CGRA (Raj Setaluri)
-11:15am - 12:30pm -- Lunch
-12:30pm -  4:30pm -- Freeform Hacking
+10:45am - 11:30am -- Advanced Magma (Lenny Truong)
+11:30am - 12:30pm -- Lunch
+12:30pm -  4:00pm -- Freeform Hacking
+ 4:00pm -  4:30pm -- Garnet - Using the magma ecosystem to build a CGRA (Raj Setaluri)
  4:30pm -  5:00pm -- Show and Tell and Debrief
 ```
 
@@ -49,6 +50,20 @@ assignment will involve creating a signal generator on the FPGA, which can be
 used to drive a pattern using the on board LEDs. We’ll also show attendees how
 to use a logic analyzer to check and debug their designs.
 
+## Advanced Magma
+This will be an informal session on the advanced magma features for building
+complex generators including introspection, metaprogramming, and testing.  The
+exact topics covered will depend on interest, so we will poll attendees to see
+what will be most relevant for their projects.  At this point, attendees are
+also welcome to get started on their hackathon projects.  
+
+## Freeform hacking
+The afternoon will be devoted free form hacking where attendees are free to
+hack wherever they want. The goal of this hackathon is to support self
+organizing projects, so we’ll mainly be providing space, materials, and support
+for attendees.  Please submit a PR that adds a link to your project repository
+to [projects/README.md](/projects/README.md).
+
 ## Using the magma ecosystem to build a CGRA
 In this session we'll present [garnet](https://github.com/StanfordAHA/garnet),
 our latest project that is using the Magma ecosystem to construct a CGRA.
@@ -57,13 +72,6 @@ be integrated with the verification tools.  We'll also present concrete
 examples of how integration with Python using Magma enables us to to leverage
 software abstractions and techniques to construct modular, composeable, and
 reuseable generators.
-
-## Freeform hacking
-The afternoon will be devoted free form hacking where attendees are free to
-hack wherever they want. The goal of this hackathon is to support self
-organizing projects, so we’ll mainly be providing space, materials, and support
-for attendees.  Please submit a PR that adds a link to your project repository
-to [projects/README.md](/projects/README.md).
 
 # Setup: Gettting Started with Magma and Mantle on the Icestick
 

@@ -4,11 +4,11 @@
     "modules":{
       "FullAdder":{
         "type":["Record",[
-          ["a","BitIn"],
-          ["b","BitIn"],
-          ["cin","BitIn"],
-          ["out","Bit"],
-          ["cout","Bit"]
+          ["I0","BitIn"],
+          ["I1","BitIn"],
+          ["CIN","BitIn"],
+          ["O","Bit"],
+          ["COUT","Bit"]
         ]],
         "instances":{
           "inst0":{
@@ -28,20 +28,20 @@
           }
         },
         "connections":[
-          ["self.a","inst0.I0"],
-          ["self.b","inst0.I1"],
-          ["self.cin","inst0.I2"],
-          ["self.out","inst0.O"],
+          ["self.I0","inst0.I0"],
+          ["self.I1","inst0.I1"],
+          ["self.CIN","inst0.I2"],
+          ["self.O","inst0.O"],
           ["inst2.O","inst1.I0"],
           ["inst3.O","inst1.I1"],
           ["inst4.O","inst1.I2"],
-          ["self.cout","inst1.O"],
-          ["self.a","inst2.I0"],
-          ["self.b","inst2.I1"],
-          ["self.b","inst3.I0"],
-          ["self.cin","inst3.I1"],
-          ["self.a","inst4.I0"],
-          ["self.cin","inst4.I1"]
+          ["self.COUT","inst1.O"],
+          ["self.I0","inst2.I0"],
+          ["self.I1","inst2.I1"],
+          ["self.I1","inst3.I0"],
+          ["self.CIN","inst3.I1"],
+          ["self.I0","inst4.I0"],
+          ["self.CIN","inst4.I1"]
         ]
       },
       "Or3xNone":{

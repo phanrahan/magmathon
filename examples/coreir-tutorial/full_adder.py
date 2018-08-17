@@ -4,33 +4,42 @@
 # In[1]:
 
 
-from magma import *
+import magma as m
+m.set_mantle_target("coreir")
+import mantle
 
-class FullAdder(Circuit):
+class FullAdder(m.Circuit):
     name = "FullAdder"
-    IO = ["a", In(Bit), "b", In(Bit), "cin", In(Bit), "out", Out(Bit), "cout", Out(Bit)]
+    IO = ["a", m.In(m.Bit), "b", m.In(m.Bit), "cin", m.In(m.Bit),
+          "out", m.Out(m.Bit), "cout", m.Out(m.Bit)]
     @classmethod
     def definition(io):
         # Generate the sum
         _sum = io.a ^ io.b ^ io.cin
-        wire(_sum, io.out)
+        m.wire(_sum, io.out)
         # Generate the carry
         carry = (io.a & io.b) | (io.b & io.cin) | (io.a & io.cin)
-        wire(carry, io.cout)
+        m.wire(carry, io.cout)
 
 
 # In[2]:
 
 
-from magma.backend.verilog import compile as compile_verilog
-
-print(compile_verilog(FullAdder))
+m.compile("build/FullAdder", FullAdder, output="coreir")
+get_ipython().magic('cat build/FullAdder.json')
 
 
 # In[3]:
 
 
-from magma.simulator.python_simulator import testvectors
+m.compile("build/FullAdder", FullAdder, output="coreir-verilog")
+get_ipython().magic('cat build/FullAdder.v')
+
+
+# In[4]:
+
+
+from fault.test_vectors import generate_simulator_test_vectors
 
 test_vectors = [
     [0, 0, 0, 0, 0],
@@ -43,12 +52,12 @@ test_vectors = [
     [1, 1, 1, 1, 1]
 ]
 
-tests = testvectors(FullAdder)
+tests = generate_simulator_test_vectors(FullAdder)
 print(tests)
 print( "Success" if tests == test_vectors else "Failure" )
 
 
-# In[4]:
+# In[5]:
 
 
 from magma.waveform import waveform

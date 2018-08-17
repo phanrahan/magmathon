@@ -9,7 +9,10 @@ m.set_mantle_target("coreir")
 import mantle
 
 class FullAdder(m.Circuit):
-    name = "FullAdder"
+    name = "FullAdderExample"  # Note: We use a unique name here 
+                               # to avoid conflict with the Circuit 
+                               # called FullAdder that is a part of 
+                               # the mantle standard library
     IO = ["a", m.In(m.Bit), "b", m.In(m.Bit), "cin", m.In(m.Bit),
           "out", m.Out(m.Bit), "cout", m.Out(m.Bit)]
     @classmethod

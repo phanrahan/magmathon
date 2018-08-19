@@ -88,7 +88,7 @@ We will be using Magma with the Lattice Icestick, a small FPGA with an
 open-source tool chain.
 
 <p align="center">
-  <img width="460" height="300" src="images/IceStick.jpg">
+  <img width="460" height="300" src="images/icestick.jpg">
 </p>
 
 > http://www.latticesemi.com/IceStick

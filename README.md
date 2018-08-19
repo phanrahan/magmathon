@@ -2,7 +2,15 @@ Welcome to the homepage for the magmathon! See [the magma
 repository](https://github.com/phanrahan/magma) for more information on
 the embedded hardware design language.
 
+If you are participating in the hackathon,
+you should try to install the required software in advance.
+Don't worry if you run into problems,
+we will debug them first thing.
+You should also identify a small project that you would like to
+try to implement.
+
 The next hackathon will be held on Wednesday, August 22nd at Facebook.
+
 
 # Schedule
 ```
@@ -20,12 +28,13 @@ The next hackathon will be held on Wednesday, August 22nd at Facebook.
 # Session Overviews
 
 ## Setup and Installation
-All attendees will receive a Lattice ice stick to program and will have access
-to a basic lab equipment including breadboards, wiring material and logic
-analyzers. Please get in touch with us early if you’d like to get any
+All attendees will receive a Lattice IceStick to program and will have access
+to a basic lab equipment,
+including breadboards, switches, LEDs, jumpers, logic analyzers.
+Please get in touch with us early if you’d like to get any
 additional hardware (sensors, buttons, etc…) for your project and we can assist
 you. This session will be devoted to getting magma and other supporting
-software setup so you can program the Lattice ice stick.
+software setup so you can program the Lattice IceStick.
 
 ## Magma Ecosystem Overview
 This session will present a high-level overview of the Magma ecosystem: a set
@@ -37,7 +46,7 @@ including verification infrastructure and high-level DSLs.
 The tutorial covers the basics of the magma hardware design language,
 introducing users to the circuit abstraction, wiring, types, and operators.  In
 this session, we will walk through creating a simple circuit in magma that
-blinks an LED on the Lattice ice stick. This simple introductory circuit is
+blinks an LED on the Lattice IceStick. This simple introductory circuit is
 analogous to writing Hello World in a programming language, and introduces the
 fundamental concept of magma as well as demonstrating the integration with the
 open source synthesis tools used to program the FPGA.
@@ -79,10 +88,10 @@ We will be using Magma with the Lattice Icestick, a small FPGA with an
 open-source tool chain.
 
 <p align="center">
-  <img width="460" height="300" src="images/icestick.jpg">
+  <img width="460" height="300" src="images/IceStick.jpg">
 </p>
 
-> http://www.latticesemi.com/icestick
+> http://www.latticesemi.com/IceStick
 > USB thumb drive form factor evaluation board - [...] an easy to use, small size board that allows rapid prototyping of system functions at a very low cost using Lattice Semiconductor's iCE40 FPGA family.
 
 This section walks through the installation process for the software toolchain.
@@ -116,7 +125,7 @@ website](http://www.clifford.at/icestorm/) and follow the instructions under
 Linux.
 
 You will need to install:
-* icestorm tools for generating bitstreams and programming the icestick
+* icestorm tools for generating bitstreams and programming the IceStick
 * arachne-pnr for placing and routing 
 * yosys verilog synthesis tool
 
@@ -158,6 +167,7 @@ every time you reboot.
 
 ### Python
 
+Magma requires Python 3.6.
 If you don't have Python setup, we recommend using Miniconda
 
 #### MacOS
@@ -227,32 +237,31 @@ Makefile blink.py
 Build the program.
 ```
 $ make
-magma -b icestick blink.py
-import mantle lattice ice40
-import mantle lattice mantle40
+magma -b IceStick -d "" blink.py
+import lattice ice40
+import lattice mantle40
 compiling FullAdder
-compiling Add22Cout
+compiling Add22_COUT
 compiling Register22
-compiling Counter22
+compiling Counter22_COUT
 compiling main
 yosys -q -p 'synth_ice40 -top main -blif blink.blif' blink.v
 arachne-pnr -q -d 1k -o blink.txt -p blink.pcf blink.blif
 icepack blink.txt blink.bin
-rm blink.v
 ```
 Running the build script invokes the `magma` cli tool. We pass the `-b
-icestick` argument to indicate to `magma` that we are compiling for the Lattice
-icestick. 
+IceStick` argument to indicate to `magma` that we are compiling for the Lattice
+IceStick. 
 `yosys`, the verilog synthesis tool, creates a file called `blink.blif`.
 `arachne-pnr`, the place and router, takes as input `blink.blif` and produces
 an ascii bit stream file `blink.txt`.  The `icepack` program converts the ascii
 bit stream file to a binary bit stream file `blink.bin`.
 
-Now plug in your icestick, and upload the the bitstream file.
+Now plug in your IceStick, and upload the the bitstream file.
 ```
 $ make upload
 iceprog blink.bin
 ```
-The LED on the icestick should blink approximately 3 times per second.
+The LED on the IceStick should blink approximately 3 times per second.
 
 Congratulations, everything is installed correctly and working!

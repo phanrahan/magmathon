@@ -61,8 +61,7 @@ test_vectors = [
     for test_vector in test_vectors_raw
 ]
 
-tests = generate_simulator_test_vectors(FullAdder)
-print(tests)
+tests = generate_simulator_test_vectors(FullAdder, flatten=False)
 print( "Success" if tests == test_vectors else "Failure" )
 
 

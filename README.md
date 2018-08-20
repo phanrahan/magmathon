@@ -99,9 +99,12 @@ We've tested these instructions on the latest version of MacOS and Ubuntu
 Linux.  Windows users should setup a linux virtual machine and configure the VM
 provider to pass through the Lattice USB device to the guest.  For convenience,
 we provide a provisioned Vagrant box (virtualbox VM), see [this page](/vagrant)
-for instructions on how to use it.  We also provide a [docker image](/docker),
+for instructions on how to use it.  
+
+<!-- We also provide a [docker image](/docker),
 but due to the requirement of USB passthrough, the setup is not quite as
 lightweight as expected.
+-->
 
 ### Icestorm tools
 

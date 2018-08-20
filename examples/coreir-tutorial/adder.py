@@ -43,11 +43,13 @@ get_ipython().magic('cat build/Adder4.json')
 
 
 from fault.test_vectors import generate_simulator_test_vectors
+import fault
 
 tests = generate_simulator_test_vectors(Adder4)
 print(" a  b  ci o  co")
 for test in tests:
     for t in test:
-        print("{:2d}".format(t), end=' ')
+        t_str = "{:2d}".format(t.as_uint()) if t is not fault.AnyValue else " U"
+        print(t_str, end=' ')
     print()
 

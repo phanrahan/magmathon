@@ -43,8 +43,9 @@ get_ipython().magic('cat build/FullAdder.v')
 
 
 from fault.test_vectors import generate_simulator_test_vectors
+from bit_vector import BitVector
 
-test_vectors = [
+test_vectors_raw = [
     [0, 0, 0, 0, 0],
     [0, 0, 1, 1, 0],
     [0, 1, 0, 1, 0],
@@ -53,6 +54,11 @@ test_vectors = [
     [1, 0, 1, 0, 1],
     [1, 1, 0, 0, 1],
     [1, 1, 1, 1, 1]
+]
+
+test_vectors = [
+    [BitVector(x) for x in test_vector]
+    for test_vector in test_vectors_raw
 ]
 
 tests = generate_simulator_test_vectors(FullAdder)
@@ -65,5 +71,5 @@ print( "Success" if tests == test_vectors else "Failure" )
 
 from magma.waveform import waveform
 
-waveform(tests, ["a", "b", "cin", "sum", "cout"])
+waveform(test_vectors_raw, ["a", "b", "cin", "sum", "cout"])
 

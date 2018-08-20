@@ -4,6 +4,7 @@ from mantle import Register
 
 @m.circuit.combinational
 def uart_logic(
+        data : m.Bits(8),
         writing : m.Bit,
         valid : m.Bit,
         dataStore : m.Bits(11),
@@ -16,8 +17,7 @@ def uart_logic(
 
     if (writing == m.bit(0)) & (valid == m.bit(0)):
         writing_out = m.bit(1)
-        # TODO(rsetaluri): fix this.
-        dataStore_out = m.bits(0, 11)
+        dataStore_out = m.concat(dataStore[0:1], data, dataStore[9:])
         writeClock_out = m.bits(100, 14)
         writeBit_out = m.bits(0, 4)
         TXReg_out = dataStore[0]
@@ -32,14 +32,14 @@ def uart_logic(
     elif (writing == m.bit(1)) & (writeClock == m.bits(0, 14)):
         writing_out = writing
         dataStore_out = dataStore
-        TXReg_out = m.bit(0) #(dataStore >> m.uint(writeBit, 11))[0]
+        TXReg_out = (dataStore >> m.zext(writeBit, 7))[0]
         writeBit_out = m.bits(m.uint(writeBit) + m.bits(1, 4))
         writeClock_out = m.bits(100, 14)
     elif writing == m.bit(1):
         writing_out = writing
         dataStore_out = dataStore
         writeBit_out = writeBit
-        TXReg_out = m.bit(0) #(dataStore >> m.uint(writeBit, 11))[0]
+        TXReg_out = (dataStore >> m.zext(writeBit, 7))[0]
         writeClock_out = m.bits(m.uint(writeClock) - m.bits(1, 14))
     else:
         writing_out = writing
@@ -73,7 +73,8 @@ class UART(m.Circuit):
          dataStore_next,
          writeClock_next,
          writeBit_next,
-         TXReg_next,) = uart_logic(writing.O[0],
+         TXReg_next,) = uart_logic(io.data,
+                                   writing.O[0],
                                    io.valid,
                                    dataStore.O,
                                    writeClock.O,

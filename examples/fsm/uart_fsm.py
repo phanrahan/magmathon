@@ -13,12 +13,13 @@ def uart_logic(
                                    m.Bits(14),
                                    m.Bits(4),
                                    m.Bit,):
-    writing_out = writing
-    dataStore_out = dataStore
-    writeClock_out = writeClock
-    writeBit_out = writeBit
 
     if (writing == m.bit(0)) & (valid == m.bit(0)):
+        #writing_out = writing
+        #dataStore_out = dataStore
+        #writeClock_out = writeClock
+        #writeBit_out = writeBit
+
         writing_out = m.bit(1)
         # TODO(rsetaluri): fix this.
         dataStore_out = m.bits(0, 11)
@@ -28,18 +29,36 @@ def uart_logic(
     elif (writing == m.bit(1)) & \
          (writeClock == m.bits(0, 14)) & \
          (writeBit == m.bits(9, 4)):
+        #writing_out = writing
+        dataStore_out = dataStore
+        writeClock_out = writeClock
+        writeBit_out = writeBit
+
         TXReg_out = m.bit(1)
         writing_out = m.bit(0)
     elif (writing == m.bit(1)) & (writeClock == m.bits(0, 14)):
-        shifted = dataStore >> writeBit
-        TXReg_out = (shifted)[0]
-        writeBit_out = writeBit + 1
+        writing_out = writing
+        dataStore_out = dataStore
+        #writeClock_out = writeClock
+        #writeBit_out = writeBit
+
+        TXReg_out = m.bit(0) #(dataStore >> m.uint(writeBit, 11))[0]
+        writeBit_out = m.bits(m.uint(writeBit) + m.bits(1, 4))
         writeClock_out = m.bits(100, 14)
     elif writing == m.bit(1):
-        shifted = dataStore >> writeBit
-        TXReg_out = shifted[0]
-        writeClock_out = writeClock - 1
+        writing_out = writing
+        dataStore_out = dataStore
+        #writeClock_out = writeClock
+        writeBit_out = writeBit
+
+        TXReg_out = m.bit(0) #(dataStore >> m.uint(writeBit, 11))[0]
+        writeClock_out = m.bits(m.uint(writeClock) - m.bits(1, 14))
     else:
+        writing_out = writing
+        dataStore_out = dataStore
+        writeClock_out = writeClock
+        writeBit_out = writeBit
+
         TXReg_out = m.bit(1)
 
     return (writing_out,
@@ -68,10 +87,10 @@ class UART(m.Circuit):
          writeClock_next,
          writeBit_next,
          TXReg_next,) = uart_logic(writing.O[0],
-                                      io.valid,
-                                      dataStore.O,
-                                      writeClock.O,
-                                      writeBit.O)
+                                   io.valid,
+                                   dataStore.O,
+                                   writeClock.O,
+                                   writeBit.O)
         m.wire(writing_next, writing.I[0])
         m.wire(dataStore_next, dataStore.I)
         m.wire(writeClock_next, writeClock.I)

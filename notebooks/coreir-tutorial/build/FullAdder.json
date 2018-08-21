@@ -12,25 +12,32 @@
         ]],
         "instances":{
           "inst0":{
-            "modref":"corebit.xor"
+            "modref":"corebit.xor",
+            "metadata":{"filename":"../mantle/mantle/coreir/logic.py","lineno":"245"}
           },
           "inst1":{
-            "modref":"corebit.xor"
+            "modref":"corebit.xor",
+            "metadata":{"filename":"../mantle/mantle/coreir/logic.py","lineno":"245"}
           },
           "inst2":{
-            "modref":"corebit.and"
+            "modref":"corebit.and",
+            "metadata":{"filename":"../mantle/mantle/coreir/logic.py","lineno":"136"}
           },
           "inst3":{
-            "modref":"corebit.and"
+            "modref":"corebit.and",
+            "metadata":{"filename":"../mantle/mantle/coreir/logic.py","lineno":"136"}
           },
           "inst4":{
-            "modref":"corebit.or"
+            "modref":"corebit.or",
+            "metadata":{"filename":"../mantle/mantle/coreir/logic.py","lineno":"197"}
           },
           "inst5":{
-            "modref":"corebit.and"
+            "modref":"corebit.and",
+            "metadata":{"filename":"../mantle/mantle/coreir/logic.py","lineno":"136"}
           },
           "inst6":{
-            "modref":"corebit.or"
+            "modref":"corebit.or",
+            "metadata":{"filename":"../mantle/mantle/coreir/logic.py","lineno":"197"}
           }
         },
         "connections":[

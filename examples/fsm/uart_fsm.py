@@ -1,9 +1,11 @@
+import sys
 import magma as m
+m.set_mantle_target('ice40')
 from mantle import Register
 
 
 @m.circuit.combinational
-def uart_logic(
+def txmod_logic(
         data : m.Bits(8),
         writing : m.Bit,
         valid : m.Bit,
@@ -32,14 +34,14 @@ def uart_logic(
     elif (writing == m.bit(1)) & (writeClock == m.bits(0, 14)):
         writing_out = writing
         dataStore_out = dataStore
-        TXReg_out = (dataStore >> m.zext(writeBit, 7))[0]
+        TXReg_out = dataStore[writeBit] #(dataStore >> m.zext(writeBit, 7))[0]
         writeBit_out = m.bits(m.uint(writeBit) + m.bits(1, 4))
         writeClock_out = m.bits(100, 14)
     elif writing == m.bit(1):
         writing_out = writing
         dataStore_out = dataStore
         writeBit_out = writeBit
-        TXReg_out = (dataStore >> m.zext(writeBit, 7))[0]
+        TXReg_out = dataStore[writeBit] #(dataStore >> m.zext(writeBit, 7))[0]
         writeClock_out = m.bits(m.uint(writeClock) - m.bits(1, 14))
     else:
         writing_out = writing
@@ -55,12 +57,12 @@ def uart_logic(
             TXReg_out,)
 
 
-class UART(m.Circuit):
+class TXMOD(m.Circuit):
     IO = ["TX", m.Out(m.Bit),
           "data", m.In(m.Bits(8)),
           "valid", m.In(m.Bit),
-          "ready", m.Out(m.Bit),]
-    IO += m.ClockInterface()
+          "ready", m.Out(m.Bit),
+          "CLK", m.In(m.Clock),]
 
     @classmethod
     def definition(io):
@@ -73,7 +75,7 @@ class UART(m.Circuit):
          dataStore_next,
          writeClock_next,
          writeBit_next,
-         TXReg_next,) = uart_logic(io.data,
+         TXReg_next,) = txmod_logic(io.data,
                                    writing.O[0],
                                    io.valid,
                                    dataStore.O,
@@ -90,5 +92,8 @@ class UART(m.Circuit):
 
 
 if __name__ == "__main__":
-    UART()
-    m.compile("uart", UART, output="coreir")
+    output = None
+    if len(sys.argv) > 1:
+        output = sys.argv[1]
+    if output is not None:
+        m.compile("txmod", TXMOD, output=output)

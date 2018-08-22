@@ -1,4 +1,3 @@
-import sys
 import magma as m
 m.set_mantle_target("ice40")
 from mantle import Register

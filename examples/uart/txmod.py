@@ -1,16 +1,6 @@
 import sys
 import magma as m
-
-
-output = "coreir"
-if len(sys.argv) > 1:
-    output = sys.argv[1]
-
-
-if output == "verilog":
-    m.set_mantle_target("ice40")
-else:
-    m.set_mantle_target("coreir")
+m.set_mantle_target("ice40")
 from mantle import Register
 
 
@@ -102,4 +92,4 @@ class TXMOD(m.Circuit):
 
 
 if __name__ == "__main__":
-    m.compile("txmod", TXMOD, output=output)
+    m.compile("txmod", TXMOD, output="verilog")

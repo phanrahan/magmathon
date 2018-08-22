@@ -14,6 +14,4 @@ out/%.bin: out/%_pnr.txt
 	icepack $< $@
 
 %.run: out/%.bin
-	sudo kextunload -b com.apple.driver.AppleUSBFTDI
 	iceprog $<
-	sudo kextload -b com.apple.driver.AppleUSBFTDI

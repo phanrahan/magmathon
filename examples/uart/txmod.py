@@ -1,6 +1,5 @@
-import sys
 import magma as m
-m.set_mantle_target('ice40')
+m.set_mantle_target("ice40")
 from mantle import Register
 
 
@@ -17,7 +16,7 @@ def txmod_logic(
                                    m.Bits(4),
                                    m.Bit,):
 
-    if (writing == m.bit(0)) & (valid == m.bit(0)):
+    if (writing == m.bit(0)) & (valid == m.bit(1)):
         writing_out = m.bit(1)
         dataStore_out = m.concat(dataStore[0:1], data, dataStore[9:])
         writeClock_out = m.bits(100, 14)
@@ -34,14 +33,14 @@ def txmod_logic(
     elif (writing == m.bit(1)) & (writeClock == m.bits(0, 14)):
         writing_out = writing
         dataStore_out = dataStore
-        TXReg_out = dataStore[writeBit] #(dataStore >> m.zext(writeBit, 7))[0]
+        TXReg_out = dataStore[writeBit]
         writeBit_out = m.bits(m.uint(writeBit) + m.bits(1, 4))
         writeClock_out = m.bits(100, 14)
     elif writing == m.bit(1):
         writing_out = writing
         dataStore_out = dataStore
         writeBit_out = writeBit
-        TXReg_out = dataStore[writeBit] #(dataStore >> m.zext(writeBit, 7))[0]
+        TXReg_out = dataStore[writeBit]
         writeClock_out = m.bits(m.uint(writeClock) - m.bits(1, 14))
     else:
         writing_out = writing
@@ -92,8 +91,4 @@ class TXMOD(m.Circuit):
 
 
 if __name__ == "__main__":
-    output = None
-    if len(sys.argv) > 1:
-        output = sys.argv[1]
-    if output is not None:
-        m.compile("txmod", TXMOD, output=output)
+    m.compile("txmod", TXMOD, output="verilog")

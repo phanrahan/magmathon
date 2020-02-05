@@ -1,0 +1,1 @@
+obj_dir/VFullAdder.cpp obj_dir/VFullAdder.h obj_dir/VFullAdder.mk obj_dir/VFullAdder__Syms.cpp obj_dir/VFullAdder__Syms.h obj_dir/VFullAdder__ver.d obj_dir/VFullAdder_classes.mk  : /usr/local/Cellar/verilator/4.026/bin/verilator_bin /usr/local/Cellar/verilator/4.026/bin/verilator_bin FullAdder.v 

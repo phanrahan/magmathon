@@ -36,3 +36,4 @@
 .ipynb_checkpoints
 .DS_store
 .magma
+build/

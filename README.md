@@ -9,7 +9,8 @@ we will debug them first thing.
 You should also identify a small project that you would like to
 try to implement.
 
-The next hackathon will be held on Wednesday, August 22nd at Facebook.
+The next hackathon will be held on Wednesday, March 4th at Stanford.
+Please contact @leonardt if you're interested in attending.
 
 
 # Schedule

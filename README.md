@@ -17,14 +17,14 @@ attending.
 # Schedule
 ```
  9:00am -  9:30am -- Setup and Installation
- 9:30am -  9:45am -- Magma Ecosystem Overview (Pat Hanrahan)
- 9:45am - 10:15am -- Magma Tutorial (Lenny Truong)
-10:15am - 10:45am -- Magma Assignment
-10:45am - 11:30am -- Advanced Magma (Lenny Truong)
-11:30am - 12:30pm -- Lunch
-12:30pm -  4:00pm -- Freeform Hacking
- 4:00pm -  4:30pm -- Garnet - Using the magma ecosystem to build a CGRA (Raj Setaluri)
- 4:30pm -  5:00pm -- Show and Tell and Debrief
+ 9:30am -  9:45am -- Magma Ecosystem Overview 
+ 9:45am - 10:15am -- Basic Magma
+10:15am - 10:45am -- Intermediate Magma
+10:45am - 11:30am -- Implement a signal genator
+11:30am - 12:00pm -- Advanced Magma
+12:00pm -  1:30pm -- Lunch
+ 1:30pm -  4:00pm -- Freeform Hacking
+ 4:00pm -  5:00pm -- Show and Tell and Debrief
 ```
 
 # Session Overviews

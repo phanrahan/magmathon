@@ -18,10 +18,9 @@ attending.
 ```
  9:00am -  9:30am -- Setup and Installation
  9:30am -  9:45am -- Magma Ecosystem Overview 
- 9:45am - 10:15am -- Basic Magma
-10:15am - 10:45am -- Intermediate Magma
-10:45am - 11:30am -- Implement a signal genator
-11:30am - 12:00pm -- Advanced Magma
+ 9:45am - 10:30am -- Magma Tutorial
+10:30am - 11:15am -- Magma Assignment
+11:15am - 12:00pm -- Advanced Magma
 12:00pm -  1:30pm -- Lunch
  1:30pm -  4:00pm -- Freeform Hacking
  4:00pm -  5:00pm -- Show and Tell and Debrief

@@ -1,9 +1,0 @@
-[submodule "magma"]
-	path = magma
-	url = https://github.com/phanrahan/magma.git
-[submodule "mantle"]
-	path = mantle
-	url = https://github.com/phanrahan/mantle.git
-[submodule "loam"]
-	path = loam
-	url = https://github.com/phanrahan/loam.git

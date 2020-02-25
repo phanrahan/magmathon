@@ -7,7 +7,7 @@ you should try to install the required software in advance.
 Don't worry if you run into problems,
 we will debug them first thing.
 You should also identify a small project that you would like to
-try to implement.
+try to implement.  See [this page](./projects/README.md) for examples of previous projects.
 
 The next hackathon will be held on Wednesday, March 4th at Stanford.
 Please contact [@leonardt](https://github.com/leonardt) if you're interested in

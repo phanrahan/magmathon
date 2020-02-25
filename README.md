@@ -71,6 +71,23 @@ to PATH in your /Users/yourusername/.bash_profile ? [yes|no]
 [yes] >>> yes
 ```
 
+You'll also need some third party libraries for the
+[hwtypes](https://github.com/leonardt/hwtypes) python package:
+#### Debian
+```
+$ apt install libgmp-dev libmpfr-dev libmpc-dev
+```
+#### OSX
+Requires [homebrew](https://brew.sh)
+```
+$ brew install gmp mpfr libmpc
+```
+
+#### CentOS
+```
+$ yum install libmpc-devel mpfr-devel gmp-devel
+```
+
 Install the magma ecosystem using the following pip command
 ```shell
 pip install magma-lang mantle fault

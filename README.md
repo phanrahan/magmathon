@@ -10,7 +10,8 @@ You should also identify a small project that you would like to
 try to implement.
 
 The next hackathon will be held on Wednesday, March 4th at Stanford.
-Please contact @leonardt if you're interested in attending.
+Please contact [@leonardt](https://github.com/leonardt) if you're interested in
+attending.
 
 
 # Schedule

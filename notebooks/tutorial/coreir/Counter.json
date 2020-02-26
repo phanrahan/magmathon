@@ -6,24 +6,26 @@
         "type":["Record",[
           ["inc","BitIn"],
           ["CLK",["Named","coreir.clkIn"]],
+          ["ASYNCRESET",["Named","coreir.arstIn"]],
           ["O",["Array",16,"Bit"]]
         ]],
         "instances":{
           "Counter_comb_inst0":{
             "modref":"global.Counter_comb"
           },
-          "reg_P_inst0":{
-            "genref":"coreir.reg",
+          "reg_PR_inst0":{
+            "genref":"coreir.reg_arst",
             "genargs":{"width":["Int",16]},
-            "modargs":{"clk_posedge":["Bool",true], "init":[["BitVector",16],"16'h0000"]}
+            "modargs":{"arst_posedge":["Bool",true], "clk_posedge":["Bool",true], "init":[["BitVector",16],"16'h0000"]}
           }
         },
         "connections":[
-          ["reg_P_inst0.in","Counter_comb_inst0.O0"],
+          ["reg_PR_inst0.in","Counter_comb_inst0.O0"],
           ["self.O","Counter_comb_inst0.O1"],
           ["self.inc","Counter_comb_inst0.inc"],
-          ["reg_P_inst0.out","Counter_comb_inst0.self_count_O"],
-          ["self.CLK","reg_P_inst0.clk"]
+          ["reg_PR_inst0.out","Counter_comb_inst0.self_count_O"],
+          ["self.ASYNCRESET","reg_PR_inst0.arst"],
+          ["self.CLK","reg_PR_inst0.clk"]
         ]
       },
       "Counter_comb":{

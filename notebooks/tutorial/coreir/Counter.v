@@ -1,17 +1,22 @@
-module coreir_reg #(
+module coreir_reg_arst #(
     parameter width = 1,
+    parameter arst_posedge = 1,
     parameter clk_posedge = 1,
     parameter init = 1
 ) (
     input clk,
+    input arst,
     input [width-1:0] in,
     output [width-1:0] out
 );
-  reg [width-1:0] outReg=init;
+  reg [width-1:0] outReg;
+  wire real_rst;
+  assign real_rst = arst_posedge ? arst : ~arst;
   wire real_clk;
   assign real_clk = clk_posedge ? clk : ~clk;
-  always @(posedge real_clk) begin
-    outReg <= in;
+  always @(posedge real_clk, posedge real_rst) begin
+    if (real_rst) outReg <= init;
+    else outReg <= in;
   end
   assign out = outReg;
 endmodule
@@ -115,25 +120,28 @@ endmodule
 module Counter (
     input inc,
     input CLK,
+    input ASYNCRESET,
     output [15:0] O
 );
 wire [15:0] Counter_comb_inst0_O0;
 wire [15:0] Counter_comb_inst0_O1;
-wire [15:0] reg_P_inst0_out;
+wire [15:0] reg_PR_inst0_out;
 Counter_comb Counter_comb_inst0 (
     .inc(inc),
-    .self_count_O(reg_P_inst0_out),
+    .self_count_O(reg_PR_inst0_out),
     .O0(Counter_comb_inst0_O0),
     .O1(Counter_comb_inst0_O1)
 );
-coreir_reg #(
+coreir_reg_arst #(
+    .arst_posedge(1'b1),
     .clk_posedge(1'b1),
     .init(16'h0000),
     .width(16)
-) reg_P_inst0 (
+) reg_PR_inst0 (
     .clk(CLK),
+    .arst(ASYNCRESET),
     .in(Counter_comb_inst0_O0),
-    .out(reg_P_inst0_out)
+    .out(reg_PR_inst0_out)
 );
 assign O = Counter_comb_inst0_O1;
 endmodule

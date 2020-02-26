@@ -109,7 +109,7 @@ coreir_add #(
     .out(magma_Bits_16_add_inst0_out)
 );
 assign O0 = Mux2xOutUInt16_inst0_O;
-assign O1 = self_count_O;
+assign O1 = Mux2xOutUInt16_inst0_O;
 endmodule
 
 module Counter (

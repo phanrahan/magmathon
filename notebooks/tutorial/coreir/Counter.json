@@ -51,10 +51,10 @@
           ["self.self_count_O","Mux2xOutUInt16_inst0.I0"],
           ["magma_Bits_16_add_inst0.out","Mux2xOutUInt16_inst0.I1"],
           ["self.O0","Mux2xOutUInt16_inst0.O"],
+          ["self.O1","Mux2xOutUInt16_inst0.O"],
           ["self.inc","Mux2xOutUInt16_inst0.S"],
           ["magma_Bits_16_add_inst0.in1","const_1_16.out"],
-          ["self.self_count_O","magma_Bits_16_add_inst0.in0"],
-          ["self.self_count_O","self.O1"]
+          ["self.self_count_O","magma_Bits_16_add_inst0.in0"]
         ]
       },
       "Main":{

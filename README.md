@@ -23,7 +23,7 @@ attending.
 12:00pm -  1:30pm -- Lunch
  1:30pm -  2:30pm -- (optional) Advanced Magma
  1:30pm -  4:00pm -- Freeform Hacking
- 4:00pm -  4:30pm -- Show and Tell and Debrief
+ 4:00pm -  4:30pm -- Show and Tell, Feedback, Debrief
 ```
 
 # Session Overviews

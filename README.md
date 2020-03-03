@@ -29,7 +29,7 @@ attending.
 # Session Overviews
 
 ## Setup and Installation
-Magma requires Python 3.6.
+Magma requires Python 3.7.
 If you don't have Python setup, we recommend using Miniconda
 
 #### MacOS

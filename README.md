@@ -71,24 +71,21 @@ to PATH in your /Users/yourusername/.bash_profile ? [yes|no]
 [yes] >>> yes
 ```
 
-You'll also need some third party libraries for the
+### Install third-party libraries
+You'll also need some third party libraries for simulation and the
 [hwtypes](https://github.com/leonardt/hwtypes) python package:
 * Debian
   ```
-  $ apt install libgmp-dev libmpfr-dev libmpc-dev
+  $ apt install verilator libgmp-dev libmpfr-dev libmpc-dev
   ```
 
 * MacOS
   Requires [homebrew](https://brew.sh)
   ```
-  $ brew install gmp mpfr libmpc
+  $ brew install verilator gmp mpfr libmpc
   ```
 
-* CentOS
-  ```
-  $ yum install libmpc-devel mpfr-devel gmp-devel
-  ```
-
+### Install python packages
 Install the magma ecosystem using the following pip command
 ```shell
 pip install magma-lang mantle fault
@@ -103,12 +100,7 @@ or pip
 pip install notebook
 ```
 
-You'll also need verilator
-```
-$ brew install verilator  # MacOS
-$ sudo apt-get install verilator  # Ubuntu
-```
-
+### Setup Magmathon Repository
 Clone the magmathon repository
 ```
 git clone https://github.com/phanrahan/magmathon.git

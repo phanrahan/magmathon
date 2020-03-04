@@ -21,52 +21,13 @@ module coreir_reg_arst #(
   assign out = outReg;
 endmodule
 
-module coreir_mux #(
-    parameter width = 1
-) (
-    input [width-1:0] in0,
-    input [width-1:0] in1,
-    input sel,
-    output [width-1:0] out
-);
-  assign out = sel ? in1 : in0;
-endmodule
-
-module coreir_const #(
-    parameter width = 1,
-    parameter value = 1
-) (
-    output [width-1:0] out
-);
-  assign out = value;
-endmodule
-
-module coreir_add #(
-    parameter width = 1
-) (
-    input [width-1:0] in0,
-    input [width-1:0] in1,
-    output [width-1:0] out
-);
-  assign out = in0 + in1;
-endmodule
-
 module commonlib_muxn__N2__width16 (
     input [15:0] in_data_0,
     input [15:0] in_data_1,
     input [0:0] in_sel,
     output [15:0] out
 );
-wire [15:0] _join_out;
-coreir_mux #(
-    .width(16)
-) _join (
-    .in0(in_data_0),
-    .in1(in_data_1),
-    .sel(in_sel[0]),
-    .out(_join_out)
-);
-assign out = _join_out;
+assign out = in_sel[0] ? in_data_1 : in_data_0;
 endmodule
 
 module Mux2xOutUInt16 (
@@ -75,14 +36,12 @@ module Mux2xOutUInt16 (
     input S,
     output [15:0] O
 );
-wire [15:0] coreir_commonlib_mux2x16_inst0_out;
 commonlib_muxn__N2__width16 coreir_commonlib_mux2x16_inst0 (
     .in_data_0(I0),
     .in_data_1(I1),
     .in_sel(S),
-    .out(coreir_commonlib_mux2x16_inst0_out)
+    .out(O)
 );
-assign O = coreir_commonlib_mux2x16_inst0_out;
 endmodule
 
 module Counter_comb (
@@ -91,30 +50,13 @@ module Counter_comb (
     output [15:0] O0,
     output [15:0] O1
 );
-wire [15:0] Mux2xOutUInt16_inst0_O;
-wire [15:0] const_1_16_out;
-wire [15:0] magma_Bits_16_add_inst0_out;
 Mux2xOutUInt16 Mux2xOutUInt16_inst0 (
     .I0(self_count_O),
-    .I1(magma_Bits_16_add_inst0_out),
+    .I1(self_count_O + 16'h0001),
     .S(inc),
-    .O(Mux2xOutUInt16_inst0_O)
+    .O(O0)
 );
-coreir_const #(
-    .value(16'h0001),
-    .width(16)
-) const_1_16 (
-    .out(const_1_16_out)
-);
-coreir_add #(
-    .width(16)
-) magma_Bits_16_add_inst0 (
-    .in0(self_count_O),
-    .in1(const_1_16_out),
-    .out(magma_Bits_16_add_inst0_out)
-);
-assign O0 = Mux2xOutUInt16_inst0_O;
-assign O1 = Mux2xOutUInt16_inst0_O;
+assign O1 = O0;
 endmodule
 
 module Counter (
@@ -124,13 +66,12 @@ module Counter (
     output [15:0] O
 );
 wire [15:0] Counter_comb_inst0_O0;
-wire [15:0] Counter_comb_inst0_O1;
 wire [15:0] reg_PR_inst0_out;
 Counter_comb Counter_comb_inst0 (
     .inc(inc),
     .self_count_O(reg_PR_inst0_out),
     .O0(Counter_comb_inst0_O0),
-    .O1(Counter_comb_inst0_O1)
+    .O1(O)
 );
 coreir_reg_arst #(
     .arst_posedge(1'b1),
@@ -143,6 +84,5 @@ coreir_reg_arst #(
     .in(Counter_comb_inst0_O0),
     .out(reg_PR_inst0_out)
 );
-assign O = Counter_comb_inst0_O1;
 endmodule
 

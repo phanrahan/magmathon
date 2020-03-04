@@ -59,25 +59,6 @@
           ["self.self_count_O","magma_Bits_16_add_inst0.in0"]
         ]
       },
-      "Main":{
-        "type":["Record",[
-          ["I0","BitIn"],
-          ["I1","BitIn"],
-          ["S","BitIn"],
-          ["O","Bit"]
-        ]],
-        "instances":{
-          "basic_if_inst0":{
-            "modref":"global.basic_if"
-          }
-        },
-        "connections":[
-          ["self.I0","basic_if_inst0.I.0"],
-          ["self.I1","basic_if_inst0.I.1"],
-          ["self.O","basic_if_inst0.O"],
-          ["self.S","basic_if_inst0.S"]
-        ]
-      },
       "Mux2xOutBit":{
         "type":["Record",[
           ["I0","BitIn"],

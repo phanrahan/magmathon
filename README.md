@@ -131,12 +131,7 @@ including verification infrastructure and high-level DSLs.
 
 ## Magma Tutorial
 The tutorial covers the basics of the magma hardware design language,
-introducing users to the circuit abstraction, wiring, types, and operators.  In
-this session, we will walk through creating a simple circuit in magma that
-blinks an LED on the Lattice IceStick. This simple introductory circuit is
-analogous to writing Hello World in a programming language, and introduces the
-fundamental concept of magma as well as demonstrating the integration with the
-open source synthesis tools used to program the FPGA.
+introducing users to the circuit abstraction, wiring, types, and operators.  
 
 ## Freeform hacking
 The afternoon will be devoted free form hacking where attendees are free to

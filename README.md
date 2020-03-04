@@ -32,20 +32,20 @@ attending.
 Magma requires Python 3.7.
 If you don't have Python setup, we recommend using Miniconda
 
-#### MacOS
-```
-$ curl -O https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
-$ bash Miniconda3-latest-MacOSX-x86_64.sh
-```
+* MacOS
+  ```
+  $ curl -O https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+  $ bash Miniconda3-latest-MacOSX-x86_64.sh
+  ```
 
-#### Linux
-```
-$ wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
-$ bash Miniconda3-latest-Linux-x86_64.sh
-```
+* Linux
+  ```
+  $ wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+  $ bash Miniconda3-latest-Linux-x86_64.sh
+  ```
 
-#### Windows
-We recommend using a Linux virtual machine
+* Windows
+  We recommend using a Linux virtual machine
 
 
 Follow the prompts to install Miniconda and add Python to your PATH:
